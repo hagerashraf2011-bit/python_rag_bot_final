@@ -44,7 +44,7 @@ HEADERS = {
 }
 REQUEST_TIMEOUT = 15
 REQUEST_DELAY = 0.3          # be polite between *new* requests
-EXPLANATION_WORD_LIMIT = 200  # keeps the whole topic under one 250-word chunk (see README)
+EXPLANATION_WORD_LIMIT = 200  # keeps the whole topic under one 320-word chunk
 CODE_LINE_LIMIT = 12
 HEADING_TAGS = ("h1", "h2", "h3", "h4", "h5", "h6")
 
