@@ -6,4 +6,3 @@ __pycache__/
 venv/
 nltk_data/
 data/scrape_cache/
-data/scraped_documents.json

@@ -6,7 +6,7 @@ from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 
 lemmatizer = WordNetLemmatizer()
-translator = str.maketrans("", "", string.punctuation)
+translator = str.maketrans(string.punctuation, " " * len(string.punctuation))
 protected_negation_words = {"no", "not", "nor", "never"}
 
 # A few code-related tokens that lemmatization or stopword removal would

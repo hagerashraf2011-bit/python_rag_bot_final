@@ -217,7 +217,7 @@ print(f"\nWrote {data_dir / 'best_config.json'} — 04_vector_representation.py 
 report_lines = [
     "# Retrieval Evaluation Results",
     "",
-    f"Evaluated on {len(chunks)} chunks (61 topics) using {len(ground_truth)} "
+    f"Evaluated on {len(chunks)} chunks ({len(chunks)} topics) using {len(ground_truth)} "
     "naturally-phrased ground-truth queries (not copied from topic titles), "
     "following the same Precision@3 / Recall@3 / Hit Rate@3 / Mean Reciprocal "
     "Rank methodology used in Lab6, Lab7, and Lab8.",

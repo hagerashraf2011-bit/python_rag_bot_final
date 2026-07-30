@@ -62,6 +62,9 @@ def fetch_html(url: str, session: requests.Session) -> str:
 
     response = session.get(url, headers=HEADERS, timeout=REQUEST_TIMEOUT)
     response.raise_for_status()
+    response.encoding = "utf-8"  # docs.python.org always serves UTF-8; requests
+                                  # sometimes mis-detects it, producing mojibake
+                                  # like "â" instead of proper apostrophes/dashes
     html = response.text
 
     CACHE_DIR.mkdir(parents=True, exist_ok=True)
@@ -131,7 +134,12 @@ def extract_topic(html: str, section_id: str) -> tuple[str, str]:
     code_example = ""
     pre = scope.find("pre")
     if pre is not None:
-        code_lines = pre.get_text("\n").splitlines()
+        # No separator here: Sphinx wraps each syntax-highlighted token in
+        # its own <span>, so joining with "\n" put every token on its own
+        # line. get_text() with no separator concatenates them correctly,
+        # since real line breaks already exist as literal "\n" characters
+        # inside the text nodes.
+        code_lines = pre.get_text().splitlines()
         while code_lines and not code_lines[0].strip():
             code_lines.pop(0)
         while code_lines and not code_lines[-1].strip():

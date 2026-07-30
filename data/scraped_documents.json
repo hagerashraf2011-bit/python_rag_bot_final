@@ -1,0 +1,634 @@
+[
+  {
+    "id": "print_function",
+    "title": "The print() Function",
+    "category": "basics",
+    "is_current": true,
+    "text": "Print objects to the text stream file , separated by sep and followed by end . sep , end , file , and flush , if present, must be given as keyword arguments. All non-keyword arguments are converted to strings like str() does and written to the stream, separated by sep and followed by end . Both sep and end must be strings; they can also be None , which means to use the default values. If no objects are given, print() will just write end . The file argument must be an object with a write(string) method; if it is not present or None , sys.stdout will be used. Since printed arguments are converted to text strings, print() cannot be used with binary mode file objects. For these, use file.write(...) instead. Output buffering is usually determined by file . However, if flush is true, the stream is forcibly flushed. Changed in version 3.3: Added the flush keyword argument.\nExample:\nprint(\"Hello\", \"world\")\nprint(\"A\", \"B\", \"C\", sep=\" - \")\nprint(\"no newline\", end=\"\")\nprint(\"this appears on the same line as above\")",
+    "source_url": "https://docs.python.org/3/library/functions.html"
+  },
+  {
+    "id": "variables_data_types",
+    "title": "Variables and Data Types",
+    "category": "basics",
+    "is_current": true,
+    "text": "There are three distinct numeric types: integers , floating-point numbers , and complex numbers . In addition, Booleans are a subtype of integers. Integers have unlimited precision. Floating-point numbers are usually implemented using double in C; information about the precision and internal representation of floating-point numbers for the machine on which your program is running is available in sys.float_info . Complex numbers have a real and imaginary part, which are each a floating-point number. To extract these parts from a complex number z , use z.real and z.imag . (The standard library includes the additional numeric types fractions.Fraction , for rationals, and decimal.Decimal , for floating-point numbers with user-definable precision.) Numbers are created by numeric literals or as the result of built-in functions and operators. Unadorned integer literals (including hex, octal and binary numbers) yield integers. Numeric literals containing a decimal point or an exponent sign yield floating-point numbers. Appending 'j' or 'J' to a numeric literal yields an imaginary number (a complex number with a zero real part) which you can add to an integer or float to get a complex number with real and imaginary parts. The constructors int() , float() , and complex() can be used to\nExample:\nx + complex(u, v) = complex(x + u, v)\nx * complex(u, v) = complex(x * u, x * v)",
+    "source_url": "https://docs.python.org/3/library/stdtypes.html"
+  },
+  {
+    "id": "input_function",
+    "title": "Reading User Input",
+    "category": "basics",
+    "is_current": true,
+    "text": "If the prompt argument is present, it is written to standard output without a trailing newline. The function then reads a line from input, converts it to a string (stripping a trailing newline), and returns that. When EOF is read, EOFError is raised. Example: If the readline module was loaded, then input() will use it to provide elaborate line editing and history features. Raises an auditing event builtins.input with argument prompt before reading input Raises an auditing event builtins.input/result with the result after successfully reading input.\nExample:\n>>> s = input('--> ')\n--> Monty Python's Flying Circus\n>>> s\n\"Monty Python's Flying Circus\"",
+    "source_url": "https://docs.python.org/3/library/functions.html"
+  },
+  {
+    "id": "type_casting",
+    "title": "Type Casting",
+    "category": "basics",
+    "is_current": true,
+    "text": "Return an integer object constructed from a number or a string, or return 0 if no arguments are given. Examples: If the argument defines __int__() , int(x) returns x.__int__() . If the argument defines __index__() , it returns x.__index__() . For floating-point numbers, this truncates towards zero. If the argument is not a number or if base is given, then it must be a string, bytes , or bytearray instance representing an integer in radix base . Optionally, the string can be preceded by + or - (with no space in between), have leading zeros, be surrounded by whitespace, and have single underscores interspersed between digits. A base-n integer string contains digits, each representing a value from 0 to n-1. The values 0–9 can be represented by any Unicode decimal digit. The values 10–35 can be represented by a to z (or A to Z ). The default base is 10. The allowed bases are 0 and 2–36. Base-2, -8, and -16 strings can be optionally prefixed with 0b / 0B , 0o / 0O , or 0x / 0X , as with integer literals in code. For base 0, the string is interpreted in a similar way to an\nExample:\n>>> int(123.45)\n123\n>>> int('123')\n123\n>>> int('   -12_345\\n')\n-12345\n>>> int('FACE', 16)\n64206\n>>> int('0xface', 0)\n64206\n>>> int('01110011', base=2)\n115",
+    "source_url": "https://docs.python.org/3/library/functions.html"
+  },
+  {
+    "id": "arithmetic_operators",
+    "title": "Arithmetic Operators",
+    "category": "basics",
+    "is_current": true,
+    "text": "The binary arithmetic operations have the conventional priority levels. Note that some of these operations also apply to certain non-numeric types. Apart from the power operator, there are only two levels, one for multiplicative operators and one for additive operators: The * (multiplication) operator yields the product of its arguments. The arguments must either both be numbers, or one argument must be an integer and the other must be a sequence. In the former case, the numbers are converted to a common real type and then multiplied together. In the latter case, sequence repetition is performed; a negative repetition factor yields an empty sequence. This operation can be customized using the special __mul__() and __rmul__() methods. Changed in version 3.14: If only one operand is a complex number, the other operand is converted to a floating-point number. The @ (at) operator is intended to be used for matrix multiplication. No builtin Python types implement this operator. This operation can be customized using the special __matmul__() and __rmatmul__() methods. Added in version 3.5. The / (division) and // (floor division) operators yield the quotient of their arguments. The numeric arguments are first converted to a common type . Division of integers\nExample:\nm_expr: u_expr | m_expr \"*\" u_expr | m_expr \"@\" m_expr |\n        m_expr \"//\" u_expr | m_expr \"/\" u_expr |\n        m_expr \"%\" u_expr\na_expr: m_expr | a_expr \"+\" m_expr | a_expr \"-\" m_expr",
+    "source_url": "https://docs.python.org/3/reference/expressions.html"
+  },
+  {
+    "id": "comparison_logical_operators",
+    "title": "Comparison and Logical Operators",
+    "category": "basics",
+    "is_current": true,
+    "text": "Unlike C, all comparison operations in Python have the same priority, which is lower than that of any arithmetic, shifting or bitwise operation. Also unlike C, expressions like a < b < c have the interpretation that is conventional in mathematics: Comparisons yield boolean values: True or False . Custom rich comparison methods may return non-boolean values. In this case Python will call bool() on such value in boolean contexts. Comparisons can be chained arbitrarily, e.g., x < y <= z is equivalent to x < y and y <= z , except that y is evaluated only once (but in both cases z is not evaluated at all when x < y is found to be false). Formally, if a , b , c , …, y , z are expressions and op1 , op2 , …, opN are comparison operators, then a op1 b op2 c ... y opN z is equivalent to a op1 b and b op2 c and ... y opN z , except that each expression is evaluated at most once. Note that a op1 b op2 c doesn’t imply any kind of comparison between a and c , so that, e.g., x <\nExample:\ncomparison:    or_expr (comp_operator or_expr)*\ncomp_operator: \"<\" | \">\" | \"==\" | \">=\" | \"<=\" | \"!=\"\n               | \"is\" [\"not\"] | [\"not\"] \"in\"",
+    "source_url": "https://docs.python.org/3/reference/expressions.html"
+  },
+  {
+    "id": "comments_docstrings",
+    "title": "Comments and Docstrings",
+    "category": "basics",
+    "is_current": true,
+    "text": "Here are some conventions about the content and formatting of documentation strings. The first line should always be a short, concise summary of the object’s purpose. For brevity, it should not explicitly state the object’s name or type, since these are available by other means (except if the name happens to be a verb describing a function’s operation). This line should begin with a capital letter and end with a period. If there are more lines in the documentation string, the second line should be blank, visually separating the summary from the rest of the description. The following lines should be one or more paragraphs describing the object’s calling conventions, its side effects, etc. The Python parser strips indentation from multi-line string literals when they serve as module, class, or function docstrings. Here is an example of a multi-line docstring:\nExample:\n>>> def my_function():\n...     \"\"\"Do nothing, but document it.\n...\n...     No, really, it doesn't do anything:\n...\n...         >>> my_function()\n...         >>>\n...     \"\"\"\n...     pass\n...\n>>> print(my_function.__doc__)\nDo nothing, but document it.",
+    "source_url": "https://docs.python.org/3/tutorial/controlflow.html"
+  },
+  {
+    "id": "conditionals",
+    "title": "Conditional Statements (if / elif / else)",
+    "category": "basics",
+    "is_current": true,
+    "text": "Perhaps the most well-known statement type is the if statement. For example: There can be zero or more elif parts, and the else part is optional. The keyword ‘ elif ’ is short for ‘else if’, and is useful to avoid excessive indentation. An if … elif … elif … sequence is a substitute for the switch or case statements found in other languages. If you’re comparing the same value to several constants, or checking for specific types or attributes, you may also find the match statement useful. For more details see match Statements .\nExample:\n>>> x = int(input(\"Please enter an integer: \"))\nPlease enter an integer: 42\n>>> if x < 0:\n...     x = 0\n...     print('Negative changed to zero')\n... elif x == 0:\n...     print('Zero')\n... elif x == 1:\n...     print('Single')\n... else:\n...     print('More')\n...",
+    "source_url": "https://docs.python.org/3/tutorial/controlflow.html"
+  },
+  {
+    "id": "nested_conditionals",
+    "title": "Nested if Statements",
+    "category": "basics",
+    "is_current": true,
+    "text": "Perhaps the most well-known statement type is the if statement. For example: There can be zero or more elif parts, and the else part is optional. The keyword ‘ elif ’ is short for ‘else if’, and is useful to avoid excessive indentation. An if … elif … elif … sequence is a substitute for the switch or case statements found in other languages. If you’re comparing the same value to several constants, or checking for specific types or attributes, you may also find the match statement useful. For more details see match Statements .\nExample:\n>>> x = int(input(\"Please enter an integer: \"))\nPlease enter an integer: 42\n>>> if x < 0:\n...     x = 0\n...     print('Negative changed to zero')\n... elif x == 0:\n...     print('Zero')\n... elif x == 1:\n...     print('Single')\n... else:\n...     print('More')\n...",
+    "source_url": "https://docs.python.org/3/tutorial/controlflow.html"
+  },
+  {
+    "id": "for_while_loops",
+    "title": "For and While Loops",
+    "category": "basics",
+    "is_current": true,
+    "text": "The for statement in Python differs a bit from what you may be used to in C or Pascal. Rather than always iterating over an arithmetic progression of numbers (like in Pascal), or giving the user the ability to define both the iteration step and halting condition (as C), Python’s for statement iterates over the items of any sequence (a list or a string), in the order that they appear in the sequence. For example (no pun intended): Code that modifies a collection while iterating over that same collection can be tricky to get right. Instead, it is usually more straight-forward to loop over a copy of the collection or to create a new collection:\nExample:\n>>> # Measure some strings:\n>>> words = ['cat', 'window', 'defenestrate']\n>>> for w in words:\n...     print(w, len(w))\n...\ncat 3\nwindow 6\ndefenestrate 12",
+    "source_url": "https://docs.python.org/3/tutorial/controlflow.html"
+  },
+  {
+    "id": "booleans_none",
+    "title": "Booleans and None",
+    "category": "basics",
+    "is_current": true,
+    "text": "Booleans represent truth values. The bool type has exactly two constant instances: True and False . The built-in function bool() converts any value to a boolean, if the value can be interpreted as a truth value (see section Truth Value Testing above). For logical operations, use the boolean operators and , or and not . When applying the bitwise operators & , | , ^ to two booleans, they return a bool equivalent to the logical operations “and”, “or”, “xor”. However, the logical operators and , or and != should be preferred over & , | and ^ . Deprecated since version 3.12: The use of the bitwise inversion operator ~ is deprecated and will raise an error in Python 3.16. bool is a subclass of int (see Numeric Types — int, float, complex ). In many numeric contexts, False and True behave like the integers 0 and 1, respectively. However, relying on this is discouraged; explicitly convert using int() instead.\nExample:\nresult = None\nif result is None:\n    print(\"Not calculated yet\")\n\ndef do_nothing():\n    pass\n\nprint(do_nothing())   # None — no explicit return means None",
+    "source_url": "https://docs.python.org/3/library/stdtypes.html"
+  },
+  {
+    "id": "lists_and_methods",
+    "title": "Lists and List Methods",
+    "category": "data_structures",
+    "is_current": true,
+    "text": "The list data type has some more methods. Here are all of the methods of list objects: Add an item to the end of the list. Similar to a[len(a):] = [x] . Extend the list by appending all the items from the iterable. Similar to a[len(a):] = iterable . Insert an item at a given position. The first argument is the index of the element before which to insert, so a.insert(0, x) inserts at the front of the list, and a.insert(len(a), x) is equivalent to a.append(x) . Remove the first item from the list whose value is equal to value . It raises a ValueError if there is no such item. Remove the item at the given position in the list, and return it. If no index is specified, a.pop() removes and returns the last item in the list. It raises an IndexError if the list is empty or the index is outside the list range. Remove all items from the list. Similar to del a[:] . Return zero-based index of the first occurrence of value in the list. Raises a ValueError if there is no such item. The optional arguments start and end are interpreted as in the slice\nExample:\n>>> fruits = ['orange', 'apple', 'pear', 'banana', 'kiwi', 'apple', 'banana']\n>>> fruits.count('apple')\n2\n>>> fruits.count('tangerine')\n0\n>>> fruits.index('banana')\n3\n>>> fruits.index('banana', 4)  # Find next banana starting at position 4\n6\n>>> fruits.reverse()\n>>> fruits\n['banana', 'apple', 'kiwi', 'banana', 'pear', 'apple', 'orange']",
+    "source_url": "https://docs.python.org/3/tutorial/datastructures.html"
+  },
+  {
+    "id": "list_comprehension",
+    "title": "List Comprehensions",
+    "category": "data_structures",
+    "is_current": true,
+    "text": "List comprehensions provide a concise way to create lists. Common applications are to make new lists where each element is the result of some operations applied to each member of another sequence or iterable, or to create a subsequence of those elements that satisfy a certain condition. For example, assume we want to create a list of squares, like: Note that this creates (or overwrites) a variable named x that still exists after the loop completes. We can calculate the list of squares without any side effects using: or, equivalently: which is more concise and readable. A list comprehension consists of brackets containing an expression followed by a for clause, then zero or more for or if clauses. The result will be a new list resulting from evaluating the expression in the context of the for and if clauses which follow it. For example, this listcomp combines the elements of two lists if they are not equal: and it’s equivalent to: Note how the order of the for and if statements is the same in both these snippets. If the expression is a tuple (e.g. the (x, y) in the previous example), it must be parenthesized. List comprehensions can contain\nExample:\n>>> squares = []\n>>> for x in range(10):\n...     squares.append(x**2)\n...\n>>> squares\n[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]",
+    "source_url": "https://docs.python.org/3/tutorial/datastructures.html"
+  },
+  {
+    "id": "tuples",
+    "title": "Tuples",
+    "category": "data_structures",
+    "is_current": true,
+    "text": "We saw that lists and strings have many common properties, such as indexing and slicing operations. They are two examples of sequence data types (see Sequence Types — list, tuple, range ). Since Python is an evolving language, other sequence data types may be added. There is also another standard sequence data type: the tuple . A tuple consists of a number of values separated by commas, for instance: As you see, on output tuples are always enclosed in parentheses, so that nested tuples are interpreted correctly; they may be input with or without surrounding parentheses, although often parentheses are necessary anyway (if the tuple is part of a larger expression). It is not possible to assign to the individual items of a tuple, however it is possible to create tuples which contain mutable objects, such as lists. Though tuples may seem similar to lists, they are often used in different situations and for different purposes. Tuples are immutable , and usually contain a heterogeneous sequence of elements that are accessed via unpacking (see later in this section) or indexing (or even by attribute in the case of namedtuples ). Lists are mutable , and their elements are usually homogeneous\nExample:\n>>> t = 12345, 54321, 'hello!'\n>>> t[0]\n12345\n>>> t\n(12345, 54321, 'hello!')\n>>> # Tuples may be nested:\n>>> u = t, (1, 2, 3, 4, 5)\n>>> u\n((12345, 54321, 'hello!'), (1, 2, 3, 4, 5))\n>>> # Tuples are immutable:\n>>> t[0] = 88888\nTraceback (most recent call last):",
+    "source_url": "https://docs.python.org/3/tutorial/datastructures.html"
+  },
+  {
+    "id": "dictionaries",
+    "title": "Dictionaries",
+    "category": "data_structures",
+    "is_current": true,
+    "text": "Another useful data type built into Python is the dictionary (see Mapping Types — dict ). Dictionaries are sometimes found in other languages as “associative memories” or “associative arrays”. Unlike sequences, which are indexed by a range of numbers, dictionaries are indexed by keys , which can be any immutable type; strings and numbers can always be keys. Tuples can be used as keys if they contain only strings, numbers, or tuples; if a tuple contains any mutable object either directly or indirectly, it cannot be used as a key. You can’t use lists as keys, since lists can be modified in place using index assignments, slice assignments, or methods like append() and extend() . It is best to think of a dictionary as a set of key: value pairs, with the requirement that the keys are unique (within one dictionary). A pair of braces creates an empty dictionary: {} . Placing a comma-separated list of key:value pairs within the braces adds initial key:value pairs to the dictionary; this is also the way dictionaries are written on output. The main operations on a dictionary are storing a value with some key and extracting the value given the key. It is\nExample:\n>>> tel = {'jack': 4098, 'sape': 4139}\n>>> tel['guido'] = 4127\n>>> tel\n{'jack': 4098, 'sape': 4139, 'guido': 4127}\n>>> tel['jack']\n4098\n>>> tel['irv']\nTraceback (most recent call last):\n  File \"<stdin>\", line 1, in <module>\nKeyError: 'irv'\n>>> print(tel.get('irv'))\nNone",
+    "source_url": "https://docs.python.org/3/tutorial/datastructures.html"
+  },
+  {
+    "id": "dict_comprehension",
+    "title": "Dictionary Comprehensions",
+    "category": "data_structures",
+    "is_current": true,
+    "text": "Another useful data type built into Python is the dictionary (see Mapping Types — dict ). Dictionaries are sometimes found in other languages as “associative memories” or “associative arrays”. Unlike sequences, which are indexed by a range of numbers, dictionaries are indexed by keys , which can be any immutable type; strings and numbers can always be keys. Tuples can be used as keys if they contain only strings, numbers, or tuples; if a tuple contains any mutable object either directly or indirectly, it cannot be used as a key. You can’t use lists as keys, since lists can be modified in place using index assignments, slice assignments, or methods like append() and extend() . It is best to think of a dictionary as a set of key: value pairs, with the requirement that the keys are unique (within one dictionary). A pair of braces creates an empty dictionary: {} . Placing a comma-separated list of key:value pairs within the braces adds initial key:value pairs to the dictionary; this is also the way dictionaries are written on output. The main operations on a dictionary are storing a value with some key and extracting the value given the key. It is\nExample:\n>>> tel = {'jack': 4098, 'sape': 4139}\n>>> tel['guido'] = 4127\n>>> tel\n{'jack': 4098, 'sape': 4139, 'guido': 4127}\n>>> tel['jack']\n4098\n>>> tel['irv']\nTraceback (most recent call last):\n  File \"<stdin>\", line 1, in <module>\nKeyError: 'irv'\n>>> print(tel.get('irv'))\nNone",
+    "source_url": "https://docs.python.org/3/tutorial/datastructures.html"
+  },
+  {
+    "id": "sets",
+    "title": "Sets",
+    "category": "data_structures",
+    "is_current": true,
+    "text": "Python also includes a data type for sets . A set is an unordered collection with no duplicate elements. Basic uses include membership testing and eliminating duplicate entries. Set objects also support mathematical operations like union, intersection, difference, and symmetric difference. Curly braces or the set() function can be used to create sets. Note: to create an empty set you have to use set() , not {} ; the latter creates an empty dictionary, a data structure that we discuss in the next section. Because sets are unordered, iterating over them or printing them can produce the elements in a different order than you expect. Here is a brief demonstration: Similarly to list comprehensions , set comprehensions are also supported:\nExample:\n>>> basket = {'apple', 'orange', 'apple', 'pear', 'orange', 'banana'}\n>>> print(basket)                      # show that duplicates have been removed\n{'orange', 'banana', 'pear', 'apple'}\n>>> 'orange' in basket                 # fast membership testing\nTrue\n>>> 'crabgrass' in basket\nFalse\n\n>>> # Demonstrate set operations on unique letters from two words\n>>>\n>>> a = set('abracadabra')\n>>> b = set('alacazam')",
+    "source_url": "https://docs.python.org/3/tutorial/datastructures.html"
+  },
+  {
+    "id": "string_methods",
+    "title": "Common String Methods",
+    "category": "data_structures",
+    "is_current": true,
+    "text": "Strings implement all of the common sequence operations, along with the additional methods described below. Strings also support two styles of string formatting, one providing a large degree of flexibility and customization (see str.format() , Format string syntax and Custom string formatting ) and the other based on C printf style formatting that handles a narrower range of types and is slightly harder to use correctly, but is often faster for the cases it can handle ( printf-style String Formatting ). The Text Processing Services section of the standard library covers a number of other modules that provide various text related utilities (including regular expression support in the re module). Return a copy of the string with its first character capitalized and the rest lowercased. Changed in version 3.8: The first character is now put into titlecase rather than uppercase. This means that characters like digraphs will only have their first letter capitalized, instead of the full character. Return a casefolded copy of the string. Casefolded strings may be used for caseless matching. Casefolding is similar to lowercasing but more aggressive because it is intended to remove all case distinctions in a string. For example, the German lowercase letter 'ß'\nExample:\n>>> 'straße'.lower()\n'straße'\n>>> 'straße'.casefold()\n'strasse'",
+    "source_url": "https://docs.python.org/3/library/stdtypes.html"
+  },
+  {
+    "id": "slicing",
+    "title": "Sequence Slicing",
+    "category": "data_structures",
+    "is_current": true,
+    "text": "A more advanced form of subscription, slicing , is commonly used to extract a portion of a sequence . In this form, the subscript is a slice : up to three expressions separated by colons. Any of the expressions may be omitted, but a slice must contain at least one colon: When a slice is evaluated, the interpreter constructs a slice object whose start , stop and step attributes, respectively, are the results of the expressions between the colons. Any missing expression evaluates to None . This slice object is then passed to the __getitem__() or __class_getitem__() special method , as above.\nExample:\n>>> number_names = ['zero', 'one', 'two', 'three', 'four', 'five']\n>>> number_names[1:3]\n['one', 'two']\n>>> number_names[1:]\n['one', 'two', 'three', 'four', 'five']\n>>> number_names[:3]\n['zero', 'one', 'two']\n>>> number_names[:]\n['zero', 'one', 'two', 'three', 'four', 'five']\n>>> number_names[::2]\n['zero', 'two', 'four']\n>>> number_names[:-3]",
+    "source_url": "https://docs.python.org/3/reference/expressions.html"
+  },
+  {
+    "id": "sorting_data",
+    "title": "Sorting with sorted() and sort()",
+    "category": "data_structures",
+    "is_current": true,
+    "text": "Return a new sorted list from the items in iterable . Has two optional arguments which must be specified as keyword arguments. key specifies a function of one argument that is used to extract a comparison key from each element in iterable (for example, key=str.lower ). The default value is None (compare the elements directly). reverse is a boolean value. If set to True , then the list elements are sorted as if each comparison were reversed. Use functools.cmp_to_key() to convert an old-style cmp function to a key function. The built-in sorted() function is guaranteed to be stable. A sort is stable if it guarantees not to change the relative order of elements that compare equal — this is helpful for sorting in multiple passes (for example, sort by department, then by salary grade). The sort algorithm uses only < comparisons between items. While defining an __lt__() method will suffice for sorting, PEP 8 recommends that all six rich comparisons be implemented. This will help avoid bugs when using the same data with other ordering tools such as max() that rely on a different underlying method. Implementing all six comparisons also helps avoid confusion for mixed type comparisons which can\nExample:\nstudents = [(\"Ali\", 82), (\"Mai\", 91), (\"Zaid\", 76)]\nby_score = sorted(students, key=lambda s: s[1], reverse=True)\nprint(by_score)   # [('Mai', 91), ('Ali', 82), ('Zaid', 76)]\n\nnumbers = [3, 1, 2]\nnumbers.sort()\nprint(numbers)     # [1, 2, 3] — sorted in place, sort() itself returns None",
+    "source_url": "https://docs.python.org/3/library/functions.html"
+  },
+  {
+    "id": "unpacking",
+    "title": "Unpacking and the * Operator",
+    "category": "data_structures",
+    "is_current": true,
+    "text": "The reverse situation occurs when the arguments are already in a list or tuple but need to be unpacked for a function call requiring separate positional arguments. For instance, the built-in range() function expects separate start and stop arguments. If they are not available separately, write the function call with the * -operator to unpack the arguments out of a list or tuple: In the same fashion, dictionaries can deliver keyword arguments with the ** -operator:\nExample:\n>>> list(range(3, 6))            # normal call with separate arguments\n[3, 4, 5]\n>>> args = [3, 6]\n>>> list(range(*args))            # call with arguments unpacked from a list\n[3, 4, 5]",
+    "source_url": "https://docs.python.org/3/tutorial/controlflow.html"
+  },
+  {
+    "id": "functions_args",
+    "title": "Functions, Arguments, and Return Values",
+    "category": "functions_functional",
+    "is_current": true,
+    "text": "We can create a function that writes the Fibonacci series to an arbitrary boundary: The keyword def introduces a function definition . It must be followed by the function name and the parenthesized list of formal parameters. The statements that form the body of the function start at the next line, and must be indented. The first statement of the function body can optionally be a string literal; this string literal is the function’s documentation string, or docstring . (More about docstrings can be found in the section Documentation Strings .) There are tools which use docstrings to automatically produce online or printed documentation, or to let the user interactively browse through code; it’s good practice to include docstrings in code that you write, so make a habit of it. The execution of a function introduces a new symbol table used for the local variables of the function. More precisely, all variable assignments in a function store the value in the local symbol table; whereas variable references first look in the local symbol table, then in the local symbol tables of enclosing functions, then in the global symbol table, and finally in the table of built-in names. Thus, global variables\nExample:\n>>> def fib(n):    # write Fibonacci series less than n\n...     \"\"\"Print a Fibonacci series less than n.\"\"\"\n...     a, b = 0, 1\n...     while a < n:\n...         print(a, end=' ')\n...         a, b = b, a+b\n...     print()\n...\n>>> # Now call the function we just defined:\n>>> fib(2000)\n0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597",
+    "source_url": "https://docs.python.org/3/tutorial/controlflow.html"
+  },
+  {
+    "id": "lambda_functions",
+    "title": "Lambda Functions",
+    "category": "functions_functional",
+    "is_current": true,
+    "text": "Small anonymous functions can be created with the lambda keyword. This function returns the sum of its two arguments: lambda a, b: a+b . Lambda functions can be used wherever function objects are required. They are syntactically restricted to a single expression. Semantically, they are just syntactic sugar for a normal function definition. Like nested function definitions, lambda functions can reference variables from the containing scope: The above example uses a lambda expression to return a function. Another use is to pass a small function as an argument. For instance, list.sort() takes a sorting key function key which can be a lambda function:\nExample:\n>>> def make_incrementor(n):\n...     return lambda x: x + n\n...\n>>> f = make_incrementor(42)\n>>> f(0)\n42\n>>> f(1)\n43",
+    "source_url": "https://docs.python.org/3/tutorial/controlflow.html"
+  },
+  {
+    "id": "map_filter_reduce",
+    "title": "map(), filter(), and reduce()",
+    "category": "functions_functional",
+    "is_current": true,
+    "text": "Return an iterator that applies function to every item of iterable , yielding the results. If additional iterables arguments are passed, function must take that many arguments and is applied to the items from all iterables in parallel. With multiple iterables, the iterator stops when the shortest iterable is exhausted. If strict is True and one of the iterables is exhausted before the others, a ValueError is raised. For cases where the function inputs are already arranged into argument tuples, see itertools.starmap() . Changed in version 3.14: Added the strict parameter.\nExample:\nfrom functools import reduce\nnumbers = [1, 2, 3, 4, 5]\ndoubled = list(map(lambda n: n * 2, numbers))\nevens = list(filter(lambda n: n % 2 == 0, numbers))\ntotal = reduce(lambda a, b: a + b, numbers)\nprint(doubled, evens, total)   # [2, 4, 6, 8, 10] [2, 4] 15",
+    "source_url": "https://docs.python.org/3/library/functions.html"
+  },
+  {
+    "id": "decorators",
+    "title": "Decorators",
+    "category": "functions_functional",
+    "is_current": true,
+    "text": "A function returning another function, usually applied as a function transformation using the @wrapper syntax. Common examples for decorators are classmethod() and staticmethod() . The decorator syntax is merely syntactic sugar, the following two function definitions are semantically equivalent: The same concept exists for classes, but is less commonly used there. See the documentation for function definitions and class definitions for more about decorators.\nExample:\ndef f(arg):\n    ...\nf = staticmethod(f)\n\n@staticmethod\ndef f(arg):\n    ...",
+    "source_url": "https://docs.python.org/3/glossary.html"
+  },
+  {
+    "id": "generators",
+    "title": "Generators and yield",
+    "category": "functions_functional",
+    "is_current": true,
+    "text": "Generators are a simple and powerful tool for creating iterators. They are written like regular functions but use the yield statement whenever they want to return data. Each time next() is called on it, the generator resumes where it left off (it remembers all the data values and which statement was last executed). An example shows that generators can be trivially easy to create: Anything that can be done with generators can also be done with class-based iterators as described in the previous section. What makes generators so compact is that the __iter__() and __next__() methods are created automatically. Another key feature is that the local variables and execution state are automatically saved between calls. This made the function easier to write and much more clear than an approach using instance variables like self.index and self.data . In addition to automatic method creation and saving program state, when generators terminate, they automatically raise StopIteration . In combination, these features make it easy to create iterators with no more effort than writing a regular function.\nExample:\ndef reverse(data):\n    for index in range(len(data)-1, -1, -1):\n        yield data[index]",
+    "source_url": "https://docs.python.org/3/tutorial/classes.html"
+  },
+  {
+    "id": "closures",
+    "title": "Closures",
+    "category": "functions_functional",
+    "is_current": true,
+    "text": "Before introducing classes, I first have to tell you something about Python’s scope rules. Class definitions play some neat tricks with namespaces, and you need to know how scopes and namespaces work to fully understand what’s going on. Incidentally, knowledge about this subject is useful for any advanced Python programmer. Let’s begin with some definitions. A namespace is a mapping from names to objects. Most namespaces are currently implemented as Python dictionaries, but that’s normally not noticeable in any way (except for performance), and it may change in the future. Examples of namespaces are: the set of built-in names (containing functions such as abs() , and built-in exception names); the global names in a module; and the local names in a function invocation. In a sense the set of attributes of an object also form a namespace. The important thing to know about namespaces is that there is absolutely no relation between names in different namespaces; for instance, two different modules may both define a function maximize without confusion — users of the modules must prefix it with the module name. By the way, I use the word attribute for any name following a dot — for example, in the\nExample:\ndef scope_test():\n    def do_local():\n        spam = \"local spam\"\n\n    def do_nonlocal():\n        nonlocal spam\n        spam = \"nonlocal spam\"\n\n    def do_global():\n        global spam\n        spam = \"global spam\"",
+    "source_url": "https://docs.python.org/3/tutorial/classes.html"
+  },
+  {
+    "id": "recursion",
+    "title": "Recursion",
+    "category": "functions_functional",
+    "is_current": true,
+    "text": "Set the maximum depth of the Python interpreter stack to limit . This limit prevents infinite recursion from causing an overflow of the C stack and crashing Python. The highest possible limit is platform-dependent. A user may need to set the limit higher when they have a program that requires deep recursion and a platform that supports a higher limit. This should be done with care, because a too-high limit can lead to a crash. If the new limit is too low at the current recursion depth, a RecursionError exception is raised. Changed in version 3.5.1: A RecursionError exception is now raised if the new limit is too low at the current recursion depth.\nExample:\ndef factorial(n):\n    if n <= 1:               # base case — stops the recursion\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial(5))    # 120\n\n# without a base case, this would recurse forever until RecursionError:\n# def broken(n):\n#     return broken(n - 1)",
+    "source_url": "https://docs.python.org/3/library/sys.html"
+  },
+  {
+    "id": "oop_classes",
+    "title": "Classes and Objects",
+    "category": "oop",
+    "is_current": true,
+    "text": "Classes introduce a little bit of new syntax, three new object types, and some new semantics. The simplest form of class definition looks like this: Class definitions, like function definitions ( def statements) must be executed before they have any effect. (You could conceivably place a class definition in a branch of an if statement, or inside a function.) In practice, the statements inside a class definition will usually be function definitions, but other statements are allowed, and sometimes useful — we’ll come back to this later. The function definitions inside a class normally have a peculiar form of argument list, dictated by the calling conventions for methods — again, this is explained later. When a class definition is entered, a new namespace is created, and used as the local scope — thus, all assignments to local variables go into this new namespace. In particular, function definitions bind the name of the new function here. When a class definition is left normally (via the end), a class object is created. This is basically a wrapper around the contents of the namespace created by the class definition; we’ll learn more about class objects in the next section. The original local scope\nExample:\nclass ClassName:\n    <statement-1>\n    .\n    .\n    .\n    <statement-N>",
+    "source_url": "https://docs.python.org/3/tutorial/classes.html"
+  },
+  {
+    "id": "oop_inheritance",
+    "title": "Inheritance",
+    "category": "oop",
+    "is_current": true,
+    "text": "Of course, a language feature would not be worthy of the name “class” without supporting inheritance. The syntax for a derived class definition looks like this: The name BaseClassName must be defined in a namespace accessible from the scope containing the derived class definition. In place of a base class name, other arbitrary expressions are also allowed. This can be useful, for example, when the base class is defined in another module: Execution of a derived class definition proceeds the same as for a base class. When the class object is constructed, the base class is remembered. This is used for resolving attribute references: if a requested attribute is not found in the class, the search proceeds to look in the base class. This rule is applied recursively if the base class itself is derived from some other class. There’s nothing special about instantiation of derived classes: DerivedClassName() creates a new instance of the class. Method references are resolved as follows: the corresponding class attribute is searched, descending down the chain of base classes if necessary, and the method reference is valid if this yields a function object. Derived classes may override methods of their base classes. Because methods have\nExample:\nclass DerivedClassName(BaseClassName):\n    <statement-1>\n    .\n    .\n    .\n    <statement-N>",
+    "source_url": "https://docs.python.org/3/tutorial/classes.html"
+  },
+  {
+    "id": "polymorphism",
+    "title": "Polymorphism",
+    "category": "oop",
+    "is_current": true,
+    "text": "A programming style which does not look at an object’s type to determine if it has the right interface; instead, the method or attribute is simply called or used (“If it looks like a duck and quacks like a duck, it must be a duck.”) By emphasizing interfaces rather than specific types, well-designed code improves its flexibility by allowing polymorphic substitution. Duck-typing avoids tests using type() or isinstance() . (Note, however, that duck-typing can be complemented with abstract base classes .) Instead, it typically employs hasattr() tests or EAFP programming.\nExample:\nclass Dog:\n    def speak(self):\n        return \"Woof\"\n\nclass Cat:\n    def speak(self):\n        return \"Meow\"\n\nfor animal in [Dog(), Cat()]:\n    print(animal.speak())   # Woof, then Meow — same method call, different behavior",
+    "source_url": "https://docs.python.org/3/glossary.html"
+  },
+  {
+    "id": "encapsulation",
+    "title": "Encapsulation",
+    "category": "oop",
+    "is_current": true,
+    "text": "“Private” instance variables that cannot be accessed except from inside an object don’t exist in Python. However, there is a convention that is followed by most Python code: a name prefixed with an underscore (e.g. _spam ) should be treated as a non-public part of the API (whether it is a function, a method or a data member). It should be considered an implementation detail and subject to change without notice. Since there is a valid use-case for class-private members (namely to avoid name clashes of names with names defined by subclasses), there is limited support for such a mechanism, called name mangling . Any identifier of the form __spam (at least two leading underscores, at most one trailing underscore) is textually replaced with _classname__spam , where classname is the current class name with leading underscore(s) stripped. This mangling is done without regard to the syntactic position of the identifier, as long as it occurs within the definition of a class. See also The private name mangling specifications for details and special cases. Name mangling is helpful for letting subclasses override methods without breaking intraclass method calls. For example: The above example would work even if MappingSubclass were to introduce\nExample:\nclass Mapping:\n    def __init__(self, iterable):\n        self.items_list = []\n        self.__update(iterable)\n\n    def update(self, iterable):\n        for item in iterable:\n            self.items_list.append(item)\n\n    __update = update   # private copy of original update() method\n\nclass MappingSubclass(Mapping):",
+    "source_url": "https://docs.python.org/3/tutorial/classes.html"
+  },
+  {
+    "id": "magic_methods",
+    "title": "Magic (Dunder) Methods",
+    "category": "oop",
+    "is_current": true,
+    "text": "A class can implement certain operations that are invoked by special syntax (such as arithmetic operations or subscripting and slicing) by defining methods with special names. This is Python’s approach to operator overloading , allowing classes to define their own behavior with respect to language operators. For instance, if a class defines a method named __getitem__() , and x is an instance of this class, then x[i] is roughly equivalent to type(x).__getitem__(x, i) . Except where mentioned, attempts to execute an operation raise an exception when no appropriate method is defined (typically AttributeError or TypeError ). Setting a special method to None indicates that the corresponding operation is not available. For example, if a class sets __iter__() to None , the class is not iterable, so calling iter() on its instances will raise a TypeError (without falling back to __getitem__() ). [ 2 ] When implementing a class that emulates any built-in type, it is important that the emulation only be implemented to the degree that it makes sense for the object being modelled. For example, some sequences may work well with retrieval of individual elements, but extracting a slice may not make sense. (One example of this is the\nExample:\ndef __hash__(self):\n    return hash((self.name, self.nick, self.color))",
+    "source_url": "https://docs.python.org/3/reference/datamodel.html"
+  },
+  {
+    "id": "static_class_methods",
+    "title": "Static Methods and Class Methods",
+    "category": "oop",
+    "is_current": true,
+    "text": "Transform a method into a static method. A static method does not receive an implicit first argument. To declare a static method, use this idiom: The @staticmethod form is a function decorator – see Function definitions for details. A static method can be called either on the class (such as C.f() ) or on an instance (such as C().f() ). Moreover, the static method descriptor is also callable, so it can be used in the class definition (such as f() ). Static methods in Python are similar to those found in Java or C++. Also, see classmethod() for a variant that is useful for creating alternate class constructors. Like all decorators, it is also possible to call staticmethod as a regular function and do something with its result. This is needed in some cases where you need a reference to a function from a class body and you want to avoid the automatic transformation to instance method. For these cases, use this idiom: For more information on static methods, see The standard type hierarchy . Changed in version 3.10: Static methods now inherit the method attributes ( __module__ , __name__ , __qualname__ , __doc__ and __annotations__ ), have a new\nExample:\nclass C:\n    @staticmethod\n    def f(arg1, arg2, argN): ...",
+    "source_url": "https://docs.python.org/3/library/functions.html"
+  },
+  {
+    "id": "properties",
+    "title": "Properties",
+    "category": "oop",
+    "is_current": true,
+    "text": "Return a property attribute. fget is a function for getting an attribute value. fset is a function for setting an attribute value. fdel is a function for deleting an attribute value. And doc creates a docstring for the attribute. A typical use is to define a managed attribute x : If c is an instance of C , c.x will invoke the getter, c.x = value will invoke the setter, and del c.x the deleter. If given, doc will be the docstring of the property attribute. Otherwise, the property will copy fget ’s docstring (if it exists). This makes it possible to create read-only properties easily using property() as a decorator : The @property decorator turns the voltage() method into a “getter” for a read-only attribute with the same name, and it sets the docstring for voltage to “Get the current voltage.” A property object has getter , setter , and deleter methods usable as decorators that create a copy of the property with the corresponding accessor function set to the decorated function. This is best explained with an example: This code is exactly equivalent to the first example. Be sure to give the additional functions the same name as\nExample:\nclass C:\n    def __init__(self):\n        self._x = None\n\n    def getx(self):\n        return self._x\n\n    def setx(self, value):\n        self._x = value\n\n    def delx(self):\n        del self._x",
+    "source_url": "https://docs.python.org/3/library/functions.html"
+  },
+  {
+    "id": "abstract_classes",
+    "title": "Abstract Classes",
+    "category": "oop",
+    "is_current": true,
+    "text": "Source code: Lib/abc.py This module provides the infrastructure for defining abstract base classes (ABCs) in Python, as outlined in PEP 3119 ; see the PEP for why this was added to Python. (See also PEP 3141 and the numbers module regarding a type hierarchy for numbers based on ABCs.) The collections module has some concrete classes that derive from ABCs; these can, of course, be further derived. In addition, the collections.abc submodule has some ABCs that can be used to test whether a class or instance provides a particular interface, for example, if it is hashable or if it is a mapping . This module provides the metaclass ABCMeta for defining ABCs and a helper class ABC to alternatively define ABCs through inheritance: A helper class that has ABCMeta as its metaclass. With this class, an abstract base class can be created by simply deriving from ABC avoiding sometimes confusing metaclass usage, for example: Note that the type of ABC is still ABCMeta , therefore inheriting from ABC requires the usual precautions regarding metaclass usage, as multiple inheritance may lead to metaclass conflicts. One may also define an abstract base class by passing the metaclass keyword and using ABCMeta directly,\nExample:\nfrom abc import ABC\n\nclass MyABC(ABC):\n    pass",
+    "source_url": "https://docs.python.org/3/library/abc.html"
+  },
+  {
+    "id": "dataclasses",
+    "title": "Dataclasses",
+    "category": "oop",
+    "is_current": true,
+    "text": "Source code: Lib/dataclasses.py This module provides a decorator and functions for automatically adding generated special methods such as __init__() and __repr__() to user-defined classes. It was originally described in PEP 557 . The member variables to use in these generated methods are defined using PEP 526 type annotations. For example, this code: will add, among other things, a __init__() that looks like: Note that this method is automatically added to the class: it is not directly specified in the InventoryItem definition shown above. Added in version 3.7. This function is a decorator that is used to add generated special methods to classes, as described below. The @dataclass decorator examines the class to find field s. A field is defined as a class variable that has a type annotation . With two exceptions described below, nothing in @dataclass examines the type specified in the variable annotation. The order of the fields in all of the generated methods is the order in which they appear in the class definition. The @dataclass decorator will add various “dunder” methods to the class, described below. If any of the added methods already exist in the class, the behavior depends on the parameter, as documented below.\nExample:\nfrom dataclasses import dataclass\n\n@dataclass\nclass InventoryItem:\n    \"\"\"Class for keeping track of an item in inventory.\"\"\"\n    name: str\n    unit_price: float\n    quantity_on_hand: int = 0\n\n    def total_cost(self) -> float:\n        return self.unit_price * self.quantity_on_hand",
+    "source_url": "https://docs.python.org/3/library/dataclasses.html"
+  },
+  {
+    "id": "error_handling",
+    "title": "Error Handling with try / except",
+    "category": "errors_files",
+    "is_current": true,
+    "text": "It is possible to write programs that handle selected exceptions. Look at the following example, which asks the user for input until a valid integer has been entered, but allows the user to interrupt the program (using Control - C or whatever the operating system supports); note that a user-generated interruption is signalled by raising the KeyboardInterrupt exception. The try statement works as follows. First, the try clause (the statement(s) between the try and except keywords) is executed. If no exception occurs, the except clause is skipped and execution of the try statement is finished. If an exception occurs during execution of the try clause, the rest of the clause is skipped. Then, if its type matches the exception named after the except keyword, the except clause is executed, and then execution continues after the try/except block. If an exception occurs which does not match the exception named in the except clause , it is passed on to outer try statements; if no handler is found, it is an unhandled exception and execution stops with an error message. A try statement may have more than one except clause , to specify handlers for different exceptions. At most one handler will\nExample:\n>>> while True:\n...     try:\n...         x = int(input(\"Please enter a number: \"))\n...         break\n...     except ValueError:\n...         print(\"Oops!  That was no valid number.  Try again...\")\n...",
+    "source_url": "https://docs.python.org/3/tutorial/errors.html"
+  },
+  {
+    "id": "custom_exceptions",
+    "title": "Custom Exceptions",
+    "category": "errors_files",
+    "is_current": true,
+    "text": "Programs may name their own exceptions by creating a new exception class (see Classes for more about Python classes). Exceptions should typically be derived from the Exception class, either directly or indirectly. Exception classes can be defined which do anything any other class can do, but are usually kept simple, often only offering a number of attributes that allow information about the error to be extracted by handlers for the exception. Most exceptions are defined with names that end in “Error”, similar to the naming of the standard exceptions. Many standard modules define their own exceptions to report errors that may occur in functions they define.\nExample:\nclass BankError(Exception):\n    pass\n\nclass InsufficientFundsError(BankError):\n    pass\n\ndef withdraw(balance, amount):\n    if amount > balance:\n        raise InsufficientFundsError(\"Not enough balance\")\n    return balance - amount\n\ntry:\n    withdraw(50, 100)\nexcept InsufficientFundsError as e:\n    print(f\"Withdrawal failed: {e}\")",
+    "source_url": "https://docs.python.org/3/tutorial/errors.html"
+  },
+  {
+    "id": "context_managers",
+    "title": "Context Managers (with statement)",
+    "category": "errors_files",
+    "is_current": true,
+    "text": "The with statement wraps a block of code with setup and cleanup logic that\nalways runs, even if an error occurs inside the block — most commonly\nused for closing files or releasing resources like network connections\nand locks. Any object that implements __enter__ and __exit__ can be used\nafter with, and open() already supports this pattern out of the box.\n\nThe main reason to prefer `with open(...) as f:` over manually calling\nopen() and close() is safety: if an exception happens between opening and\nclosing the file, a manual close() call would be skipped and the file\nwould stay open, silently leaking a resource — with guarantees cleanup\nhappens regardless.\n\nExample:\nwith open(\"notes.txt\", \"w\") as file:\n    file.write(\"Learning Python RAG\\n\")\n# file is automatically closed here, even if writing had raised an error\n\nclass Timer:\n    def __enter__(self):\n        print(\"starting\")\n        return self\n    def __exit__(self, *args):\n        print(\"done\")\n\nwith Timer():\n    print(\"doing work\")",
+    "source_url": "https://docs.python.org/3/reference/datamodel.html"
+  },
+  {
+    "id": "file_handling",
+    "title": "Reading and Writing Files",
+    "category": "errors_files",
+    "is_current": true,
+    "text": "open() returns a file object , and is most commonly used with two positional arguments and one keyword argument: open(filename, mode, encoding=None) The first argument is a string containing the filename. The second argument is another string containing a few characters describing the way in which the file will be used. mode can be 'r' when the file will only be read, 'w' for only writing (an existing file with the same name will be erased), and 'a' opens the file for appending; any data written to the file is automatically added to the end. 'r+' opens the file for both reading and writing. The mode argument is optional; 'r' will be assumed if it’s omitted. Normally, files are opened in text mode , that means, you read and write strings from and to the file, which are encoded in a specific encoding . If encoding is not specified, the default is platform dependent (see open() ). Because UTF-8 is the modern de-facto standard, encoding=\"utf-8\" is recommended unless you know that you need to use a different encoding. Appending a 'b' to the mode opens the file in binary mode . Binary mode data is read and written as bytes\nExample:\n>>> f = open('workfile', 'w', encoding=\"utf-8\")",
+    "source_url": "https://docs.python.org/3/tutorial/inputoutput.html"
+  },
+  {
+    "id": "pathlib",
+    "title": "Working with Paths using pathlib",
+    "category": "errors_files",
+    "is_current": true,
+    "text": "Added in version 3.4. Source code: Lib/pathlib/ This module offers classes representing filesystem paths with semantics appropriate for different operating systems. Path classes are divided between pure paths , which provide purely computational operations without I/O, and concrete paths , which inherit from pure paths but also provide I/O operations. If you’ve never used this module before or just aren’t sure which class is right for your task, Path is most likely what you need. It instantiates a concrete path for the platform the code is running on. Pure paths are useful in some special cases; for example: If you want to manipulate Windows paths on a Unix machine (or vice versa). You cannot instantiate a WindowsPath when running on Unix, but you can instantiate PureWindowsPath . You want to make sure that your code only manipulates paths without actually accessing the OS. In this case, instantiating one of the pure classes may be useful since those simply don’t have any OS-accessing operations. See also PEP 428 : The pathlib module – object-oriented filesystem paths. See also For low-level path manipulation on strings, you can also use the os.path module. Importing the main class: Listing subdirectories: Listing Python source files\nExample:\n>>> from pathlib import Path",
+    "source_url": "https://docs.python.org/3/library/pathlib.html"
+  },
+  {
+    "id": "json_handling",
+    "title": "Working with JSON",
+    "category": "errors_files",
+    "is_current": true,
+    "text": "Source code: Lib/json/__init__.py JSON (JavaScript Object Notation) , specified by RFC 7159 (which obsoletes RFC 4627 ) and by ECMA-404 , is a lightweight data interchange format inspired by JavaScript object literal syntax (although it is not a strict subset of JavaScript [ 1 ] ). Note The term “object” in the context of JSON processing in Python can be ambiguous. All values in Python are objects. In JSON, an object refers to any data wrapped in curly braces, similar to a Python dictionary. Warning Be cautious when parsing JSON data from untrusted sources. A malicious JSON string may cause the decoder to consume considerable CPU and memory resources. Limiting the size of data to be parsed is recommended. This module exposes an API familiar to users of the standard library marshal and pickle modules. Encoding basic Python object hierarchies: Compact encoding: Pretty printing: Customizing JSON object encoding: Decoding JSON: Customizing JSON object decoding: Extending JSONEncoder : Using json from the shell to validate and pretty-print: See Command-line interface for detailed documentation. Note JSON is a subset of YAML 1.2. The JSON produced by this module’s default settings (in particular, the default separators value) is also a subset of YAML\nExample:\n>>> import json\n>>> json.dumps(['foo', {'bar': ('baz', None, 1.0, 2)}])\n'[\"foo\", {\"bar\": [\"baz\", null, 1.0, 2]}]'\n>>> print(json.dumps(\"\\\"foo\\bar\"))\n\"\\\"foo\\bar\"\n>>> print(json.dumps('\\u1234'))\n\"\\u1234\"\n>>> print(json.dumps('\\\\'))\n\"\\\\\"\n>>> print(json.dumps({\"c\": 0, \"b\": 0, \"a\": 0}, sort_keys=True))\n{\"a\": 0, \"b\": 0, \"c\": 0}\n>>> from io import StringIO",
+    "source_url": "https://docs.python.org/3/library/json.html"
+  },
+  {
+    "id": "csv_handling",
+    "title": "Working with CSV Files",
+    "category": "errors_files",
+    "is_current": true,
+    "text": "Source code: Lib/csv.py The so-called CSV (Comma Separated Values) format is the most common import and export format for spreadsheets and databases. CSV format was used for many years prior to attempts to describe the format in a standardized way in RFC 4180 . The lack of a well-defined standard means that subtle differences often exist in the data produced and consumed by different applications. These differences can make it annoying to process CSV files from multiple sources. Still, while the delimiters and quoting characters vary, the overall format is similar enough that it is possible to write a single module which can efficiently manipulate such data, hiding the details of reading and writing the data from the programmer. The csv module implements classes to read and write tabular data in CSV format. It allows programmers to say, “write this data in the format preferred by Excel,” or “read data from this file which was generated by Excel,” without knowing the precise details of the CSV format used by Excel. Programmers can also describe the CSV formats understood by other applications or define their own special-purpose CSV formats. The csv module’s reader and writer objects read and write sequences. Programmers\nExample:\n>>> import csv\n>>> with open('eggs.csv', newline='') as csvfile:\n...     spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')\n...     for row in spamreader:\n...         print(', '.join(row))\nSpam, Spam, Spam, Spam, Spam, Baked Beans\nSpam, Lovely Spam, Wonderful Spam",
+    "source_url": "https://docs.python.org/3/library/csv.html"
+  },
+  {
+    "id": "os_module",
+    "title": "The os Module",
+    "category": "errors_files",
+    "is_current": true,
+    "text": "Source code: Lib/os.py This module provides a portable way of using operating system dependent functionality. If you just want to read or write a file see open() , if you want to manipulate paths, see the os.path module, and if you want to read all the lines in all the files on the command line see the fileinput module. For creating temporary files and directories see the tempfile module, and for high-level file and directory handling see the shutil module. Notes on the availability of these functions: The design of all built-in operating system dependent modules of Python is such that as long as the same functionality is available, it uses the same interface; for example, the function os.stat(path) returns stat information about path in the same format (which happens to have originated with the POSIX interface). Extensions peculiar to a particular operating system are also available through the os module, but using them is of course a threat to portability. All functions accepting path or file names accept both bytes and string objects, and result in an object of the same type, if a path or file name is returned. On VxWorks, os.popen, os.fork, os.execv and os.spawn*p* are not\nExample:\nfd = os.open(\"/proc/1/ns/net\", os.O_RDONLY)\nos.setns(fd, os.CLONE_NEWNET)\nos.close(fd)",
+    "source_url": "https://docs.python.org/3/library/os.html"
+  },
+  {
+    "id": "modules_imports",
+    "title": "Modules and Imports",
+    "category": "modules_packages",
+    "is_current": true,
+    "text": "A module can contain executable statements as well as function definitions. These statements are intended to initialize the module. They are executed only the first time the module name is encountered in an import statement. [ 1 ] (They are also run if the file is executed as a script.) Each module has its own private namespace, which is used as the global namespace by all functions defined in the module. Thus, the author of a module can use global variables in the module without worrying about accidental clashes with a user’s global variables. On the other hand, if you know what you are doing you can touch a module’s global variables with the same notation used to refer to its functions, modname.itemname . Modules can import other modules. It is customary but not required to place all import statements at the beginning of a module (or script, for that matter). The imported module names, if placed at the top level of a module (outside any functions or classes), are added to the module’s global namespace. There is a variant of the import statement that imports names from a module directly into the importing module’s namespace. For example: This does\nExample:\n>>> from fibo import fib, fib2\n>>> fib(500)\n0 1 1 2 3 5 8 13 21 34 55 89 144 233 377",
+    "source_url": "https://docs.python.org/3/tutorial/modules.html"
+  },
+  {
+    "id": "packages_init",
+    "title": "Packages and __init__.py",
+    "category": "modules_packages",
+    "is_current": true,
+    "text": "Packages are a way of structuring Python’s module namespace by using “dotted module names”. For example, the module name A.B designates a submodule named B in a package named A . Just like the use of modules saves the authors of different modules from having to worry about each other’s global variable names, the use of dotted module names saves the authors of multi-module packages like NumPy or Pillow from having to worry about each other’s module names. Suppose you want to design a collection of modules (a “package”) for the uniform handling of sound files and sound data. There are many different sound file formats (usually recognized by their extension, for example: .wav , .aiff , .au ), so you may need to create and maintain a growing collection of modules for the conversion between the various file formats. There are also many different operations you might want to perform on sound data (such as mixing, adding echo, applying an equalizer function, creating an artificial stereo effect), so in addition you will be writing a never-ending stream of modules to perform these operations. Here’s a possible structure for your package (expressed in terms of a hierarchical filesystem): When importing\nExample:\nsound/                          Top-level package\n      __init__.py               Initialize the sound package\n      formats/                  Subpackage for file format conversions\n              __init__.py\n              wavread.py\n              wavwrite.py\n              aiffread.py\n              aiffwrite.py\n              auread.py\n              auwrite.py\n              ...\n      effects/                  Subpackage for sound effects",
+    "source_url": "https://docs.python.org/3/tutorial/modules.html"
+  },
+  {
+    "id": "pip_packages",
+    "title": "Installing Packages with pip",
+    "category": "modules_packages",
+    "is_current": true,
+    "text": "This section covers the basics of how to install Python packages . It’s important to note that the term “package” in this context is being used to describe a bundle of software to be installed (i.e. as a synonym for a distribution ). It does not refer to the kind of package that you import in your Python source code (i.e. a container of modules). It is common in the Python community to refer to a distribution using the term “package”. Using the term “distribution” is often not preferred, because it can easily be confused with a Linux distribution, or another larger software distribution like Python itself. This section describes the steps to follow before installing other Python packages. Before you go any further, make sure you have Python and that the expected version is available from your command line. You can check this by running: You should get some output like Python 3.6.3 . If you do not have Python, please install the latest 3.x version from python.org or refer to the Installing Python section of the Hitchhiker’s Guide to Python. Note If you’re a newcomer and you get an error like this: It’s because this command and other\nExample:\npython3 --version",
+    "source_url": "https://packaging.python.org/en/latest/tutorials/installing-packages/"
+  },
+  {
+    "id": "datetime_module",
+    "title": "The datetime Module",
+    "category": "modules_packages",
+    "is_current": true,
+    "text": "Source code: Lib/datetime.py The datetime module supplies classes for manipulating dates and times. While date and time arithmetic is supported, the focus of the implementation is on efficient attribute extraction for output formatting and manipulation. Tip Skip to the format codes . See also General calendar related functions. Time access and conversions. Concrete time zones representing the IANA time zone database. Third-party library with expanded time zone and parsing support. Third-party library that introduces distinct static types to for example, allow static type checkers to differentiate between naive and aware datetimes. Date and time objects may be categorized as “aware” or “naive” depending on whether or not they include time zone information. With sufficient knowledge of applicable algorithmic and political time adjustments, such as time zone and daylight saving time information, an aware object can locate itself relative to other aware objects. An aware object represents a specific moment in time that is not open to interpretation. [ 1 ] A naive object does not contain enough information to unambiguously locate itself relative to other date/time objects. Whether a naive object represents Coordinated Universal Time (UTC), local time, or time in some other time zone is purely up to the\nExample:\n>>> import datetime as dt\n>>> delta = dt.timedelta(\n...     days=50,\n...     seconds=27,\n...     microseconds=10,\n...     milliseconds=29000,\n...     minutes=5,\n...     hours=8,\n...     weeks=2\n... )\n>>> # Only days, seconds, and microseconds remain\n>>> delta",
+    "source_url": "https://docs.python.org/3/library/datetime.html"
+  },
+  {
+    "id": "math_random_modules",
+    "title": "The math and random Modules",
+    "category": "modules_packages",
+    "is_current": true,
+    "text": "This module provides access to common mathematical functions and constants, including those defined by the C standard. These functions cannot be used with complex numbers; use the functions of the same name from the cmath module if you require support for complex numbers. The distinction between functions which support complex numbers and those which don’t is made since most users do not want to learn quite as much mathematics as required to understand complex numbers. Receiving an exception instead of a complex result allows earlier detection of the unexpected complex number used as a parameter, so that the programmer can determine how and why it was generated in the first place. The following functions are provided by this module. Except when explicitly noted otherwise, all return values are floats. Number-theoretic functions comb(n, k) Number of ways to choose k items from n items without repetition and without order factorial(n) n factorial gcd(*integers) Greatest common divisor of the integer arguments isqrt(n) Integer square root of a nonnegative integer n lcm(*integers) Least common multiple of the integer arguments perm(n, k) Number of ways to choose k items from n items without repetition and with order Floating point arithmetic ceil(x) Ceiling of x\nExample:\n>>> from math import exp, expm1\n>>> exp(1e-5) - 1  # gives result accurate to 11 places\n1.0000050000069649e-05\n>>> expm1(1e-5)    # result accurate to full precision\n1.0000050000166668e-05",
+    "source_url": "https://docs.python.org/3/library/math.html"
+  },
+  {
+    "id": "argparse_cli",
+    "title": "Command-Line Arguments with argparse",
+    "category": "modules_packages",
+    "is_current": true,
+    "text": "Added in version 3.2. Source code: Lib/argparse.py Note While argparse is the default recommended standard library module for implementing basic command line applications, authors with more exacting requirements for exactly how their command line applications behave may find it doesn’t provide the necessary level of control. Refer to Choosing an argument parsing library for alternatives to consider when argparse doesn’t support behaviors that the application requires (such as entirely disabling support for interspersed options and positional arguments, or accepting option parameter values that start with - even when they correspond to another defined option). Tutorial This page contains the API reference information. For a more gentle introduction to Python command-line parsing, have a look at the argparse tutorial . The argparse module makes it easy to write user-friendly command-line interfaces. The program defines what arguments it requires, and argparse will figure out how to parse those out of sys.argv . The argparse module also automatically generates help and usage messages. The module will also issue errors when users give the program invalid arguments. The argparse module’s support for command-line interfaces is built around an instance of argparse.ArgumentParser . It is a container for argument specifications and has options that apply\nExample:\nparser = argparse.ArgumentParser(\n                    prog='ProgramName',\n                    description='What the program does',\n                    epilog='Text at the bottom of help')",
+    "source_url": "https://docs.python.org/3/library/argparse.html"
+  },
+  {
+    "id": "threading_basics",
+    "title": "Threading Basics",
+    "category": "concurrency",
+    "is_current": true,
+    "text": "Source code: Lib/threading.py This module constructs higher-level threading interfaces on top of the lower level _thread module. Availability : not WASI. This module does not work or is not available on WebAssembly. See WebAssembly platforms for more information. The threading module provides a way to run multiple threads (smaller units of a process) concurrently within a single process. It allows for the creation and management of threads, making it possible to execute tasks in parallel, sharing memory space. Threads are particularly useful when tasks are I/O bound, such as file operations or making network requests, where much of the time is spent waiting for external resources. A typical use case for threading includes managing a pool of worker threads that can process multiple tasks concurrently. Here’s a basic example of creating and starting threads using Thread : Changed in version 3.7: This module used to be optional, it is now always available. See also concurrent.futures.ThreadPoolExecutor offers a higher level interface to push tasks to a background thread without blocking execution of the calling thread, while still being able to retrieve their results when needed. queue provides a thread-safe interface for exchanging data between running threads. asyncio offers an alternative approach\nExample:\nimport threading\nimport time\n\ndef crawl(link, delay=3):\n    print(f\"crawl started for {link}\")\n    time.sleep(delay)  # Blocking I/O (simulating a network request)\n    print(f\"crawl ended for {link}\")\n\nlinks = [\n    \"https://python.org\",\n    \"https://docs.python.org\",\n    \"https://peps.python.org\",",
+    "source_url": "https://docs.python.org/3/library/threading.html"
+  },
+  {
+    "id": "multiprocessing_basics",
+    "title": "Multiprocessing Basics",
+    "category": "concurrency",
+    "is_current": true,
+    "text": "Source code: Lib/multiprocessing/ Availability : not Android, not iOS, not WASI. This module is not supported on mobile platforms or WebAssembly platforms . multiprocessing is a package that supports spawning processes using an API similar to the threading module. The multiprocessing package offers both local and remote concurrency, effectively side-stepping the Global Interpreter Lock by using subprocesses instead of threads. Due to this, the multiprocessing module allows the programmer to fully leverage multiple processors on a given machine. It runs on both POSIX and Windows. The multiprocessing module also introduces the Pool object which offers a convenient means of parallelizing the execution of a function across multiple input values, distributing the input data across processes (data parallelism). The following example demonstrates the common practice of defining such functions in a module so that child processes can successfully import that module. This basic example of data parallelism using Pool , will print to standard output The multiprocessing module also introduces APIs which do not have analogs in the threading module, like the ability to terminate , interrupt or kill a running process. See also concurrent.futures.ProcessPoolExecutor offers a higher level interface to push tasks to a background process without blocking execution of\nExample:\nfrom multiprocessing import Pool\n\ndef f(x):\n    return x*x\n\nif __name__ == '__main__':\n    with Pool(5) as p:\n        print(p.map(f, [1, 2, 3]))",
+    "source_url": "https://docs.python.org/3/library/multiprocessing.html"
+  },
+  {
+    "id": "async_await",
+    "title": "async and await",
+    "category": "concurrency",
+    "is_current": true,
+    "text": "Source code: Lib/asyncio/coroutines.py Coroutines declared with the async/await syntax is the preferred way of writing asyncio applications. For example, the following snippet of code prints “hello”, waits 1 second, and then prints “world”: Note that simply calling a coroutine will not schedule it to be executed: To actually run a coroutine, asyncio provides the following mechanisms: The asyncio.run() function to run the top-level entry point “main()” function (see the above example.) Awaiting on a coroutine. The following snippet of code will print “hello” after waiting for 1 second, and then print “world” after waiting for another 2 seconds: Expected output: The asyncio.create_task() function to run coroutines concurrently as asyncio Tasks . Let’s modify the above example and run two say_after coroutines concurrently : Note that expected output now shows that the snippet runs 1 second faster than before: The asyncio.TaskGroup class provides a more modern alternative to create_task() . Using this API, the last example becomes: The timing and output should be the same as for the previous version. Added in version 3.11: asyncio.TaskGroup .\nExample:\n>>> import asyncio\n\n>>> async def main():\n...     print('hello')\n...     await asyncio.sleep(1)\n...     print('world')\n\n>>> asyncio.run(main())\nhello\nworld",
+    "source_url": "https://docs.python.org/3/library/asyncio-task.html"
+  },
+  {
+    "id": "gil_explained",
+    "title": "The Global Interpreter Lock (GIL)",
+    "category": "concurrency",
+    "is_current": true,
+    "text": "The mechanism used by the CPython interpreter to assure that only one thread executes Python bytecode at a time. This simplifies the CPython implementation by making the object model (including critical built-in types such as dict ) implicitly safe against concurrent access. Locking the entire interpreter makes it easier for the interpreter to be multi-threaded, at the expense of much of the parallelism afforded by multi-processor machines. However, some extension modules, either standard or third-party, are designed so as to release the GIL when doing computationally intensive tasks such as compression or hashing. Also, the GIL is always released when doing I/O. As of Python 3.13, the GIL can be disabled using the --disable-gil build configuration. After building Python with this option, code must be run with -X gil=0 or after setting the PYTHON_GIL=0 environment variable. This feature enables improved performance for multi-threaded applications and makes it easier to use multi-core CPUs efficiently. For more details, see PEP 703 . In prior versions of Python’s C API, a function might declare that it requires the GIL to be held in order to use it. This refers to having an attached thread state .\nExample:\n# CPU-bound work (heavy math, image processing): use multiprocessing\n# I/O-bound work (network requests, file reads, sleep): threading or\n# asyncio both work well, since the GIL is released during the wait",
+    "source_url": "https://docs.python.org/3/glossary.html"
+  },
+  {
+    "id": "queue_module",
+    "title": "The queue Module",
+    "category": "concurrency",
+    "is_current": true,
+    "text": "Source code: Lib/queue.py The queue module implements multi-producer, multi-consumer queues. It is especially useful in threaded programming when information must be exchanged safely between multiple threads. The Queue class in this module implements all the required locking semantics. The module implements three types of queue, which differ only in the order in which the entries are retrieved. In a FIFO queue, the first tasks added are the first retrieved. In a LIFO queue, the most recently added entry is the first retrieved (operating like a stack). With a priority queue, the entries are kept sorted (using the heapq module) and the lowest valued entry is retrieved first. Internally, those three types of queues use locks to temporarily block competing threads; however, they are not designed to handle reentrancy within a thread. In addition, the module implements a “simple” FIFO queue type, SimpleQueue , whose specific implementation provides additional guarantees in exchange for the smaller functionality. The queue module defines the following classes and exceptions: Constructor for a FIFO queue. maxsize is an integer that sets the upperbound limit on the number of items that can be placed in the queue. Insertion will block once this size has been reached, until\nExample:\nfrom dataclasses import dataclass, field\nfrom typing import Any\n\n@dataclass(order=True)\nclass PrioritizedItem:\n    priority: int\n    item: Any=field(compare=False)",
+    "source_url": "https://docs.python.org/3/library/queue.html"
+  },
+  {
+    "id": "unit_testing",
+    "title": "Unit Testing with unittest / pytest",
+    "category": "professional_tools",
+    "is_current": true,
+    "text": "Source code: Lib/unittest/__init__.py (If you are already familiar with the basic concepts of testing, you might want to skip to the list of assert methods .) The unittest unit testing framework was originally inspired by JUnit and has a similar flavor as major unit testing frameworks in other languages. It supports test automation, sharing of setup and shutdown code for tests, aggregation of tests into collections, and independence of the tests from the reporting framework. To achieve this, unittest supports some important concepts in an object-oriented way: A test fixture represents the preparation needed to perform one or more tests, and any associated cleanup actions. This may involve, for example, creating temporary or proxy databases, directories, or starting a server process. A test case is the individual unit of testing. It checks for a specific response to a particular set of inputs. unittest provides a base class, TestCase , which may be used to create new test cases. A test suite is a collection of test cases, test suites, or both. It is used to aggregate tests that should be executed together. A test runner is a component which orchestrates the execution of tests and provides the outcome to the\nExample:\nimport unittest\n\nclass TestStringMethods(unittest.TestCase):\n\n    def test_upper(self):\n        self.assertEqual('foo'.upper(), 'FOO')\n\n    def test_isupper(self):\n        self.assertTrue('FOO'.isupper())\n        self.assertFalse('Foo'.isupper())\n\n    def test_split(self):",
+    "source_url": "https://docs.python.org/3/library/unittest.html"
+  },
+  {
+    "id": "logging_module",
+    "title": "The logging Module",
+    "category": "professional_tools",
+    "is_current": true,
+    "text": "Source code: Lib/logging/__init__.py Important This page contains the API reference information. For tutorial information and discussion of more advanced topics, see Basic Tutorial Advanced Tutorial Logging Cookbook This module defines functions and classes which implement a flexible event logging system for applications and libraries. The key benefit of having the logging API provided by a standard library module is that all Python modules can participate in logging, so your application log can include your own messages integrated with messages from third-party modules. Here’s a simple example of idiomatic usage: If you run myapp.py , you should see this in myapp.log : The key feature of this idiomatic usage is that the majority of code is simply creating a module level logger with getLogger(__name__) , and using that logger to do any needed logging. This is concise, while allowing downstream code fine-grained control if needed. Logged messages to the module-level logger get forwarded to handlers of loggers in higher-level modules, all the way up to the highest-level logger known as the root logger; this approach is known as hierarchical logging. For logging to be useful, it needs to be configured: setting the levels and destinations for each logger, potentially changing how\nExample:\n# myapp.py\nimport logging\nimport mylib\nlogger = logging.getLogger(__name__)\n\ndef main():\n    logging.basicConfig(filename='myapp.log', level=logging.INFO)\n    logger.info('Started')\n    mylib.do_something()\n    logger.info('Finished')\n\nif __name__ == '__main__':",
+    "source_url": "https://docs.python.org/3/library/logging.html"
+  },
+  {
+    "id": "regex_basics",
+    "title": "Regular Expressions with re",
+    "category": "professional_tools",
+    "is_current": true,
+    "text": "Source code: Lib/re/ This module provides regular expression matching operations similar to those found in Perl. Both patterns and strings to be searched can be Unicode strings ( str ) as well as 8-bit strings ( bytes ). However, Unicode strings and 8-bit strings cannot be mixed: that is, you cannot match a Unicode string with a bytes pattern or vice-versa; similarly, when asking for a substitution, the replacement string must be of the same type as both the pattern and the search string. Regular expressions use the backslash character ( '\\' ) to indicate special forms or to allow special characters to be used without invoking their special meaning. This collides with Python’s usage of the same character for the same purpose in string literals; for example, to match a literal backslash, one might have to write '\\\\\\\\' as the pattern string, because the regular expression must be \\\\ , and each backslash must be expressed as \\\\ inside a regular Python string literal. Also, please note that any invalid escape sequences in Python’s usage of the backslash in string literals now generate a SyntaxWarning and in the future this will become a SyntaxError . This behaviour will happen\nExample:\n>>> import re\n>>> m = re.search('(?<=abc)def', 'abcdef')\n>>> m.group(0)\n'def'",
+    "source_url": "https://docs.python.org/3/library/re.html"
+  },
+  {
+    "id": "type_hints",
+    "title": "Type Hints",
+    "category": "professional_tools",
+    "is_current": true,
+    "text": "Added in version 3.5.\nExample:\ndef greet(name: str, age: int) -> str:\n    return f\"{name} is {age} years old\"\n\nprint(greet(\"Sara\", 21))     # works fine\nprint(greet(\"Sara\", \"21\"))   # also runs! Python doesn't check the hint",
+    "source_url": "https://docs.python.org/3/library/typing.html"
+  },
+  {
+    "id": "f_strings",
+    "title": "String Formatting with f-strings",
+    "category": "professional_tools",
+    "is_current": true,
+    "text": "f-strings, available since Python 3.6, are the modern, preferred way to\nbuild strings containing variable values. Prefix the string with f and\nplace expressions inside curly braces; Python evaluates them at runtime,\nincluding arbitrary expressions, not just plain variable names. f-strings\nalso support format specifiers, such as f'{price:.2f}' for exactly two\ndecimal places.\n\nf-strings are generally faster and more readable than the older\n%-formatting or str.format() styles, since the expression sits directly\ninside the string rather than in a separate argument list you have to\nmentally match up.\n\nExample:\nname = \"Nour\"\nscore = 87.456\nprint(f\"Hello {name}, your score is {score:.1f}\")\nprint(f\"2 + 2 = {2 + 2}\")            # expressions work directly inside {}\nprint(f\"{name!r}\")                    # !r calls repr() — shows 'Nour' with quotes",
+    "source_url": "https://docs.python.org/3/reference/lexical_analysis.html"
+  },
+  {
+    "id": "enumerate_zip",
+    "title": "enumerate() and zip()",
+    "category": "professional_tools",
+    "is_current": true,
+    "text": "Return an enumerate object. iterable must be a sequence, an iterator , or some other object which supports iteration. The __next__() method of the iterator returned by enumerate() returns a tuple containing a count (from start which defaults to 0) and the values obtained from iterating over iterable . Equivalent to:\nExample:\n>>> seasons = ['Spring', 'Summer', 'Fall', 'Winter']\n>>> list(enumerate(seasons))\n[(0, 'Spring'), (1, 'Summer'), (2, 'Fall'), (3, 'Winter')]\n>>> list(enumerate(seasons, start=1))\n[(1, 'Spring'), (2, 'Summer'), (3, 'Fall'), (4, 'Winter')]",
+    "source_url": "https://docs.python.org/3/library/functions.html"
+  },
+  {
+    "id": "walrus_operator",
+    "title": "The Walrus Operator (:=)",
+    "category": "professional_tools",
+    "is_current": true,
+    "text": "There is new syntax := that assigns values to variables as part of a larger expression. It is affectionately known as “the walrus operator” due to its resemblance to the eyes and tusks of a walrus . In this example, the assignment expression helps avoid calling len() twice: A similar benefit arises during regular expression matching where match objects are needed twice, once to test whether a match occurred and another to extract a subgroup: The operator is also useful with while-loops that compute a value to test loop termination and then need that same value again in the body of the loop: Another motivating use case arises in list comprehensions where a value computed in a filtering condition is also needed in the expression body: Try to limit use of the walrus operator to clean cases that reduce complexity and improve readability. See PEP 572 for a full description. (Contributed by Emily Morehouse in bpo-35224 .)\nExample:\nif (n := len(a)) > 10:\n    print(f\"List is too long ({n} elements, expected <= 10)\")",
+    "source_url": "https://docs.python.org/3/whatsnew/3.8.html"
+  },
+  {
+    "id": "itertools_collections",
+    "title": "The itertools and collections Modules",
+    "category": "professional_tools",
+    "is_current": true,
+    "text": "This module implements a number of iterator building blocks inspired by constructs from APL, Haskell, and SML. Each has been recast in a form suitable for Python. The module standardizes a core set of fast, memory efficient tools that are useful by themselves or in combination. Together, they form an “iterator algebra” making it possible to construct specialized tools succinctly and efficiently in pure Python. For instance, SML provides a tabulation tool: tabulate(f) which produces a sequence f(0), f(1), ... . The same effect can be achieved in Python by combining map() and count() to form map(f, count()) . General iterators: Iterator Arguments Results Example accumulate() p [,func] p0, p0+p1, p0+p1+p2, … accumulate([1,2,3,4,5]) → 1 3 6 10 15 batched() p, n (p0, p1, …, p_n-1), … batched('ABCDEFG', n=3) → ABC DEF G chain() p, q, … p0, p1, … plast, q0, q1, … chain('ABC', 'DEF') → A B C D E F chain.from_iterable() iterable p0, p1, … plast, q0, q1, … chain.from_iterable(['ABC', 'DEF']) → A B C D E F compress() data, selectors (d[0] if s[0]), (d[1] if s[1]), … compress('ABCDEF', [1,0,1,0,1,1]) → A C E F count() [start[, step]] start, start+step, start+2*step, … count(10) → 10 11 12\nExample:\ndef accumulate(iterable, function=operator.add, *, initial=None):\n    'Return running totals'\n    # accumulate([1,2,3,4,5]) → 1 3 6 10 15\n    # accumulate([1,2,3,4,5], initial=100) → 100 101 103 106 110 115\n    # accumulate([1,2,3,4,5], operator.mul) → 1 2 6 24 120\n\n    iterator = iter(iterable)\n    total = initial\n    if initial is None:\n        try:\n            total = next(iterator)\n        except StopIteration:",
+    "source_url": "https://docs.python.org/3/library/itertools.html"
+  },
+  {
+    "id": "iterator_protocol",
+    "title": "Iterators and the Iterator Protocol",
+    "category": "advanced",
+    "is_current": true,
+    "text": "By now you have probably noticed that most container objects can be looped over using a for statement: This style of access is clear, concise, and convenient. The use of iterators pervades and unifies Python. Behind the scenes, the for statement calls iter() on the container object. The function returns an iterator object that defines the method __next__() which accesses elements in the container one at a time. When there are no more elements, __next__() raises a StopIteration exception which tells the for loop to terminate. You can call the __next__() method using the next() built-in function; this example shows how it all works: Having seen the mechanics behind the iterator protocol, it is easy to add iterator behavior to your classes. Define an __iter__() method which returns an object with a __next__() method. If the class defines __next__() , then __iter__() can just return self :\nExample:\nfor element in [1, 2, 3]:\n    print(element)\nfor element in (1, 2, 3):\n    print(element)\nfor key in {'one':1, 'two':2}:\n    print(key)\nfor char in \"123\":\n    print(char)\nfor line in open(\"myfile.txt\"):\n    print(line, end='')",
+    "source_url": "https://docs.python.org/3/tutorial/classes.html"
+  },
+  {
+    "id": "generator_advanced",
+    "title": "Advanced Generators (yield from, send)",
+    "category": "advanced",
+    "is_current": true,
+    "text": "Generators are a simple and powerful tool for creating iterators. They are written like regular functions but use the yield statement whenever they want to return data. Each time next() is called on it, the generator resumes where it left off (it remembers all the data values and which statement was last executed). An example shows that generators can be trivially easy to create: Anything that can be done with generators can also be done with class-based iterators as described in the previous section. What makes generators so compact is that the __iter__() and __next__() methods are created automatically. Another key feature is that the local variables and execution state are automatically saved between calls. This made the function easier to write and much more clear than an approach using instance variables like self.index and self.data . In addition to automatic method creation and saving program state, when generators terminate, they automatically raise StopIteration . In combination, these features make it easy to create iterators with no more effort than writing a regular function.\nExample:\ndef reverse(data):\n    for index in range(len(data)-1, -1, -1):\n        yield data[index]",
+    "source_url": "https://docs.python.org/3/tutorial/classes.html"
+  },
+  {
+    "id": "contextlib_manager",
+    "title": "Custom Context Managers with contextlib",
+    "category": "advanced",
+    "is_current": true,
+    "text": "This function is a decorator that can be used to define a factory function for with statement context managers, without needing to create a class or separate __enter__() and __exit__() methods. While many objects natively support use in with statements, sometimes a resource needs to be managed that isn’t a context manager in its own right, and doesn’t implement a close() method for use with contextlib.closing . An abstract example would be the following to ensure correct resource management: The function can then be used like this: The function being decorated must return a generator -iterator when called. This iterator must yield exactly one value, which will be bound to the targets in the with statement’s as clause, if any. At the point where the generator yields, the block nested in the with statement is executed. The generator is then resumed after the block is exited. If an unhandled exception occurs in the block, it is reraised inside the generator at the point where the yield occurred. Thus, you can use a try … except … finally statement to trap the error (if any), or ensure that some cleanup takes place. If an exception is trapped merely in order to\nExample:\nfrom contextlib import contextmanager\n\n@contextmanager\ndef managed_resource(*args, **kwds):\n    # Code to acquire resource, e.g.:\n    resource = acquire_resource(*args, **kwds)\n    try:\n        yield resource\n    finally:\n        # Code to release resource, e.g.:\n        release_resource(resource)",
+    "source_url": "https://docs.python.org/3/library/contextlib.html"
+  },
+  {
+    "id": "functools_lru_cache",
+    "title": "Caching with functools.lru_cache",
+    "category": "advanced",
+    "is_current": true,
+    "text": "Decorator to wrap a function with a memoizing callable that saves up to the maxsize most recent calls. It can save time when an expensive or I/O bound function is periodically called with the same arguments. The cache is threadsafe so that the wrapped function can be used in multiple threads. This means that the underlying data structure will remain coherent during concurrent updates. It is possible for the wrapped function to be called more than once if another thread makes an additional call before the initial call has been completed and cached. Since a dictionary is used to cache results, the positional and keyword arguments to the function must be hashable . Distinct argument patterns may be considered to be distinct calls with separate cache entries. For example, f(a=1, b=2) and f(b=2, a=1) differ in their keyword argument order and may have two separate cache entries. If user_function is specified, it must be a callable. This allows the lru_cache decorator to be applied directly to a user function, leaving the maxsize at its default value of 128: If maxsize is set to None , the LRU feature is disabled and the cache can grow without bound. If typed is\nExample:\n@lru_cache\ndef count_vowels(sentence):\n    return sum(sentence.count(vowel) for vowel in 'AEIOUaeiou')",
+    "source_url": "https://docs.python.org/3/library/functools.html"
+  },
+  {
+    "id": "functools_partial",
+    "title": "functools.partial",
+    "category": "advanced",
+    "is_current": true,
+    "text": "Return a new partial object which when called will behave like func called with the positional arguments args and keyword arguments keywords . If more arguments are supplied to the call, they are appended to args . If additional keyword arguments are supplied, they extend and override keywords . Roughly equivalent to: The partial() function is used for partial function application which “freezes” some portion of a function’s arguments and/or keywords resulting in a new object with a simplified signature. For example, partial() can be used to create a callable that behaves like the int() function where the base argument defaults to 2 : If Placeholder sentinels are present in args , they will be filled first when partial() is called. This makes it possible to pre-fill any positional argument with a call to partial() ; without Placeholder , only the chosen number of leading positional arguments can be pre-filled. If any Placeholder sentinels are present, all must be filled at call time: Calling say_to_world('Hello') raises a TypeError , because only one positional argument is provided, but there are two placeholders that must be filled in. If partial() is applied to an existing partial() object, Placeholder sentinels of the input\nExample:\ndef partial(func, /, *args, **keywords):\n    def newfunc(*more_args, **more_keywords):\n        return func(*args, *more_args, **(keywords | more_keywords))\n    newfunc.func = func\n    newfunc.args = args\n    newfunc.keywords = keywords\n    return newfunc",
+    "source_url": "https://docs.python.org/3/library/functools.html"
+  },
+  {
+    "id": "mro_super",
+    "title": "Method Resolution Order and super()",
+    "category": "advanced",
+    "is_current": true,
+    "text": "Return a proxy object that delegates method calls to a parent or sibling class of type . This is useful for accessing inherited methods that have been overridden in a class. The object_or_type determines the method resolution order to be searched. The search starts from the class right after the type . For example, if __mro__ of object_or_type is D -> B -> C -> A -> object and the value of type is B , then super() searches C -> A -> object . The __mro__ attribute of the class corresponding to object_or_type lists the method resolution search order used by both getattr() and super() . The attribute is dynamic and can change whenever the inheritance hierarchy is updated. If the second argument is omitted, the super object returned is unbound. If the second argument is an object, isinstance(obj, type) must be true. If the second argument is a type, issubclass(type2, type) must be true (this is useful for classmethods). When called directly within an ordinary method of a class, both arguments may be omitted (“zero-argument super() ”). In this case, type will be the enclosing class, and obj will be the first argument of the immediately enclosing function\nExample:\nclass C(B):\n    def method(self, arg):\n        super().method(arg)    # This does the same thing as:\n                               # super(C, self).method(arg)",
+    "source_url": "https://docs.python.org/3/library/functions.html"
+  },
+  {
+    "id": "enum_module",
+    "title": "The enum Module",
+    "category": "advanced",
+    "is_current": true,
+    "text": "reprlib — Alternate repr() implementation graphlib — Functionality to operate with graph-like structures Added in version 3.4. Source code: Lib/enum.py Important This page contains the API reference information. For tutorial information and discussion of more advanced topics, see Basic Tutorial Advanced Tutorial Enum Cookbook An enumeration: is a set of symbolic names (members) bound to unique values can be iterated over to return its canonical (i.e. non-alias) members in definition order uses call syntax to return members by value uses index syntax to return members by name Enumerations are created either by using class syntax, or by using function-call syntax: Even though we can use class syntax to create Enums, Enums are not normal Python classes. See How are Enums different? for more details. Note Nomenclature The class Color is an enumeration (or enum ) The attributes Color.RED , Color.GREEN , etc., are enumeration members (or members ) and are functionally constants. The enum members have names and values (the name of Color.RED is RED , the value of Color.BLUE is 3 , etc.) EnumType The type for Enum and its subclasses. Enum Base class for creating enumerated constants. IntEnum Base class for creating enumerated constants that are also subclasses\nExample:\n>>> from enum import Enum\n\n>>> # class syntax\n>>> class Color(Enum):\n...     RED = 1\n...     GREEN = 2\n...     BLUE = 3\n\n>>> # functional syntax\n>>> Color = Enum('Color', [('RED', 1), ('GREEN', 2), ('BLUE', 3)])",
+    "source_url": "https://docs.python.org/3/library/enum.html"
+  },
+  {
+    "id": "namedtuple",
+    "title": "collections.namedtuple",
+    "category": "advanced",
+    "is_current": true,
+    "text": "Returns a new tuple subclass named typename . The new subclass is used to create tuple-like objects that have fields accessible by attribute lookup as well as being indexable and iterable. Instances of the subclass also have a helpful docstring (with typename and field_names ) and a helpful __repr__() method which lists the tuple contents in a name=value format. The field_names are a sequence of strings such as ['x', 'y'] . Alternatively, field_names can be a single string with each fieldname separated by whitespace and/or commas, for example 'x y' or 'x, y' . Any valid Python identifier may be used for a fieldname except for names starting with an underscore. Valid identifiers consist of letters, digits, and underscores but do not start with a digit or underscore and cannot be a keyword such as class , for , return , global , pass , or raise . If rename is true, invalid fieldnames are automatically replaced with positional names. For example, ['abc', 'def', 'ghi', 'abc'] is converted to ['abc', '_1', 'ghi', '_3'] , eliminating the keyword def and the duplicate fieldname abc . defaults can be None or an iterable of default values. Since fields with a default value\nExample:\nfrom collections import namedtuple\n\nPoint = namedtuple(\"Point\", [\"x\", \"y\"])\np = Point(3, 4)\nprint(p.x, p.y)     # 3 4\nprint(p)             # Point(x=3, y=4)\nprint(p[0])          # 3 — still works like a regular tuple too",
+    "source_url": "https://docs.python.org/3/library/collections.html"
+  },
+  {
+    "id": "structural_pattern_matching",
+    "title": "Structural Pattern Matching (match/case)",
+    "category": "advanced",
+    "is_current": true,
+    "text": "Added in version 3.10. The match statement is used for pattern matching. Syntax: Note This section uses single quotes to denote soft keywords . Pattern matching takes a pattern as input (following case ) and a subject value (following match ). The pattern (which may contain subpatterns) is matched against the subject value. The outcomes are: A match success or failure (also termed a pattern success or failure). Possible binding of matched values to a name. The prerequisites for this are further discussed below. The match and case keywords are soft keywords . See also PEP 634 – Structural Pattern Matching: Specification PEP 636 – Structural Pattern Matching: Tutorial Here’s an overview of the logical flow of a match statement: The subject expression subject_expr is evaluated and a resulting subject value obtained. If the subject expression contains a comma, a tuple is constructed using the standard rules . Each pattern in a case_block is attempted to match with the subject value. The specific rules for success or failure are described below. The match attempt can also bind some or all of the standalone names within the pattern. The precise pattern binding rules vary per pattern type and are specified below.\nExample:\nmatch_stmt:   'match' subject_expr \":\" NEWLINE INDENT case_block+ DEDENT\nsubject_expr: flexible_expression \",\" [flexible_expression_list [',']]\n              | assignment_expression\ncase_block:   'case' patterns [guard] \":\" suite",
+    "source_url": "https://docs.python.org/3/reference/compound_stmts.html"
+  },
+  {
+    "id": "exception_chaining",
+    "title": "Exception Chaining (raise ... from)",
+    "category": "advanced",
+    "is_current": true,
+    "text": "If an unhandled exception occurs inside an except section, it will have the exception being handled attached to it and included in the error message: To indicate that an exception is a direct consequence of another, the raise statement allows an optional from clause: This can be useful when you are transforming exceptions. For example: It also allows disabling automatic exception chaining using the from None idiom: For more information about chaining mechanics, see Built-in Exceptions .\nExample:\n>>> try:\n...     open(\"database.sqlite\")\n... except OSError:\n...     raise RuntimeError(\"unable to handle error\")\n...\nTraceback (most recent call last):\n  File \"<stdin>\", line 2, in <module>\n    open(\"database.sqlite\")\n    ~~~~^^^^^^^^^^^^^^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: 'database.sqlite'\n\nDuring handling of the above exception, another exception occurred:",
+    "source_url": "https://docs.python.org/3/tutorial/errors.html"
+  },
+  {
+    "id": "copy_deepcopy",
+    "title": "copy vs deepcopy",
+    "category": "advanced",
+    "is_current": true,
+    "text": "types — Dynamic type creation and names for built-in types pprint — Data pretty printer Source code: Lib/copy.py Assignment statements in Python do not copy objects, they create bindings between a target and an object. For collections that are mutable or contain mutable items, a copy is sometimes needed so one can change one copy without changing the other. This module provides generic shallow and deep copy operations (explained below). Interface summary: Return a shallow copy of obj . Return a deep copy of obj . Creates a new object of the same type as obj , replacing fields with values from changes . Added in version 3.13. Raised for module specific errors. The difference between shallow and deep copying is only relevant for compound objects (objects that contain other objects, like lists or class instances): A shallow copy constructs a new compound object and then (to the extent possible) inserts references into it to the objects found in the original. A deep copy constructs a new compound object and then, recursively, inserts copies into it of the objects found in the original. Two problems often exist with deep copy operations that don’t exist with shallow copy operations: Recursive objects\nExample:\nimport copy\n\noriginal = [[1, 2], [3, 4]]\nshallow = copy.copy(original)\ndeep = copy.deepcopy(original)\n\nshallow[0].append(99)\nprint(original)   # [[1, 2, 99], [3, 4]] — original changed too!\nprint(deep)        # [[1, 2], [3, 4]] — deep copy is fully independent",
+    "source_url": "https://docs.python.org/3/library/copy.html"
+  },
+  {
+    "id": "bytes_vs_str",
+    "title": "Bytes, Strings, and Encoding",
+    "category": "advanced",
+    "is_current": true,
+    "text": "Textual data in Python is handled with str objects, or strings . Strings are immutable sequences of Unicode code points. String literals are written in a variety of ways: Single quotes: 'allows embedded \"double\" quotes' Double quotes: \"allows embedded 'single' quotes\" Triple quoted: '''Three single quotes''' , \"\"\"Three double quotes\"\"\" Triple quoted strings may span multiple lines - all associated whitespace will be included in the string literal. String literals that are part of a single expression and have only whitespace between them will be implicitly converted to a single string literal. That is, (\"spam \" \"eggs\") == \"spam eggs\" . See String and Bytes literals for more about the various forms of string literal, including supported escape sequences , and the r (“raw”) prefix that disables most escape sequence processing. Strings may also be created from other objects using the str constructor. Since there is no separate “character” type, indexing a string produces strings of length 1. That is, for a non-empty string s , s[0] == s[0:1] . There is also no mutable string type, but str.join() or io.StringIO can be used to efficiently construct strings from multiple fragments. Changed in version 3.3: For backwards compatibility with the\nExample:\n>>> str(b'Zoot!')\n\"b'Zoot!'\"",
+    "source_url": "https://docs.python.org/3/library/stdtypes.html"
+  },
+  {
+    "id": "type_hints_advanced",
+    "title": "Advanced Type Hints (Optional, Union, Generic)",
+    "category": "advanced",
+    "is_current": true,
+    "text": "Optional[X] is equivalent to X | None (or Union[X, None] ). Note that this is not the same concept as an optional argument, which is one that has a default. An optional argument with a default does not require the Optional qualifier on its type annotation just because it is optional. For example: On the other hand, if an explicit value of None is allowed, the use of Optional is appropriate, whether the argument is optional or not. For example: Changed in version 3.10: Optional can now be written as X | None . See union type expressions .\nExample:\ndef foo(arg: int = 0) -> None:\n    ...",
+    "source_url": "https://docs.python.org/3/library/typing.html"
+  },
+  {
+    "id": "descriptors",
+    "title": "Descriptors",
+    "category": "advanced",
+    "is_current": true,
+    "text": "The following methods only apply when an instance of the class containing the method (a so-called descriptor class) appears in an owner class (the descriptor must be in either the owner’s class dictionary or in the class dictionary for one of its parents). In the examples below, “the attribute” refers to the attribute whose name is the key of the property in the owner class’ __dict__ . The object class itself does not implement any of these protocols. Called to get the attribute of the owner class (class attribute access) or of an instance of that class (instance attribute access). The optional owner argument is the owner class, while instance is the instance that the attribute was accessed through, or None when the attribute is accessed through the owner . This method should return the computed attribute value or raise an AttributeError exception. PEP 252 specifies that __get__() is callable with one or two arguments. Python’s own built-in descriptors support this specification; however, it is likely that some third-party tools have descriptors that require both arguments. Python’s own __getattribute__() implementation always passes in both arguments whether they are required or not. Called to set the attribute on an instance instance\nExample:\nclass PositiveNumber:\n    def __set_name__(self, owner, name):\n        self.name = \"_\" + name\n    def __get__(self, obj, objtype=None):\n        return getattr(obj, self.name, None)\n    def __set__(self, obj, value):\n        if value < 0:\n            raise ValueError(\"Must be positive\")\n        setattr(obj, self.name, value)\n\nclass Product:\n    price = PositiveNumber()   # descriptor used as a class attribute\n\np = Product()\np.price = 10\nprint(p.price)   # 10\n# p.price = -5   # would raise: ValueError",
+    "source_url": "https://docs.python.org/3/reference/datamodel.html"
+  },
+  {
+    "id": "singleton_pattern",
+    "title": "The Singleton Design Pattern",
+    "category": "advanced",
+    "is_current": true,
+    "text": "Called to create a new instance of class cls . __new__() is a static method (special-cased so you need not declare it as such) that takes the class of which an instance was requested as its first argument. The remaining arguments are those passed to the object constructor expression (the call to the class). The return value of __new__() should be the new object instance (usually an instance of cls ). Typical implementations create a new instance of the class by invoking the superclass’s __new__() method using super().__new__(cls[, ...]) with appropriate arguments and then modifying the newly created instance as necessary before returning it. If __new__() is invoked during object construction and it returns an instance of cls , then the new instance’s __init__() method will be invoked like __init__(self[, ...]) , where self is the new instance and the remaining arguments are the same as were passed to the object constructor. If __new__() does not return an instance of cls , then the new instance’s __init__() method will not be invoked. __new__() is intended mainly to allow subclasses of immutable types (like int, str, or tuple) to customize instance creation. It is also commonly overridden in custom metaclasses in\nExample:\nclass Singleton:\n    _instance = None\n\n    def __new__(cls):\n        if cls._instance is None:\n            cls._instance = super().__new__(cls)\n        return cls._instance\n\na = Singleton()\nb = Singleton()\nprint(a is b)   # True — both names point to the exact same object",
+    "source_url": "https://docs.python.org/3/reference/datamodel.html"
+  }
+]

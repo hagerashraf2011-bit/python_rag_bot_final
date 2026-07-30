@@ -1,7 +1,7 @@
 {
-  "alpha": 0.6,
-  "selected_from": "Hybrid alpha=0.6",
-  "mean_reciprocal_rank": 0.8694,
-  "hit_rate@3": 0.9398,
+  "alpha": 0.9,
+  "selected_from": "Hybrid alpha=0.9",
+  "mean_reciprocal_rank": 0.6823,
+  "hit_rate@3": 0.7952,
   "num_ground_truth_queries": 166
 }

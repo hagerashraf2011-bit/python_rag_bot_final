@@ -8,18 +8,18 @@ echo.
 
 REM --- 1. Create virtual environment if it doesn't already exist ---
 if not exist venv (
-    echo [1/7] Creating virtual environment...
+    echo [1/8] Creating virtual environment...
     python -m venv venv
 ) else (
-    echo [1/7] Virtual environment already exists, skipping.
+    echo [1/8] Virtual environment already exists, skipping.
 )
 
 REM --- 2. Activate it (call, so the rest of this script keeps running) ---
-echo [2/7] Activating virtual environment...
+echo [2/8] Activating virtual environment...
 call venv\Scripts\activate.bat
 
 REM --- 3. Install dependencies ---
-echo [3/7] Installing dependencies from requirements.txt (this may take a while)...
+echo [3/8] Installing dependencies from requirements.txt (this may take a while)...
 pip install -r requirements.txt
 if errorlevel 1 (
     echo.
@@ -29,12 +29,12 @@ if errorlevel 1 (
 )
 
 REM --- 4. Download NLTK data ---
-echo [4/7] Downloading NLTK data...
+echo [4/8] Downloading NLTK data...
 python -c "import nltk; nltk.download('punkt'); nltk.download('punkt_tab'); nltk.download('stopwords'); nltk.download('wordnet')"
 
 REM --- 5. Make sure .env exists ---
 if not exist .env (
-    echo [5/7] No .env found - creating one from .env.example.
+    echo [5/8] No .env found - creating one from .env.example.
     copy .env.example .env >nul
     echo.
     echo IMPORTANT: .env was just created with placeholder values.
@@ -42,11 +42,21 @@ if not exist .env (
     echo.
     notepad .env
 ) else (
-    echo [5/7] .env already exists, skipping.
+    echo [5/8] .env already exists, skipping.
 )
 
-REM --- 6. Run the retrieval evaluation (auto-tunes ALPHA) ---
-echo [6/7] Running retrieval evaluation (auto-tunes ALPHA)...
+REM --- 6. Scrape fresh content from docs.python.org ---
+echo [6/8] Scraping the knowledge base from docs.python.org...
+python 00_scrape_documents.py
+if errorlevel 1 (
+    echo.
+    echo WARNING: scraping failed or was skipped ^(e.g. no internet^). The app
+    echo will automatically fall back to the curated topics built into
+    echo 01_documents.py - this is not a fatal error, continuing.
+)
+
+REM --- 7. Run the retrieval evaluation (auto-tunes ALPHA) ---
+echo [7/8] Running retrieval evaluation (auto-tunes ALPHA)...
 python evaluation\evaluate_retrieval.py
 if errorlevel 1 (
     echo.
@@ -54,8 +64,8 @@ if errorlevel 1 (
     echo the default ALPHA=0.6 - this is not a fatal error, continuing.
 )
 
-REM --- 7. Build the vector store ---
-echo [7/7] Building the vector store...
+REM --- 8. Build the vector store ---
+echo [8/8] Building the vector store...
 python 05_create_chroma_store.py
 if errorlevel 1 (
     echo.
