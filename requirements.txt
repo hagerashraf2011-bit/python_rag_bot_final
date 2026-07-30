@@ -1,0 +1,14 @@
+beautifulsoup4
+chromadb
+lxml
+nltk
+numpy
+openai
+pandas
+python-dotenv
+rank-bm25
+requests
+scikit-learn
+sentence-transformers
+streamlit
+tabulate

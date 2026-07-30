@@ -1,0 +1,78 @@
+@echo off
+setlocal enabledelayedexpansion
+
+echo ============================================
+echo   Python RAG Tutor Bot - Automatic Setup
+echo ============================================
+echo.
+
+REM --- 1. Create virtual environment if it doesn't already exist ---
+if not exist venv (
+    echo [1/7] Creating virtual environment...
+    python -m venv venv
+) else (
+    echo [1/7] Virtual environment already exists, skipping.
+)
+
+REM --- 2. Activate it (call, so the rest of this script keeps running) ---
+echo [2/7] Activating virtual environment...
+call venv\Scripts\activate.bat
+
+REM --- 3. Install dependencies ---
+echo [3/7] Installing dependencies from requirements.txt (this may take a while)...
+pip install -r requirements.txt
+if errorlevel 1 (
+    echo.
+    echo ERROR: pip install failed. Fix the error above and re-run this script.
+    pause
+    exit /b 1
+)
+
+REM --- 4. Download NLTK data ---
+echo [4/7] Downloading NLTK data...
+python -c "import nltk; nltk.download('punkt'); nltk.download('punkt_tab'); nltk.download('stopwords'); nltk.download('wordnet')"
+
+REM --- 5. Make sure .env exists ---
+if not exist .env (
+    echo [5/7] No .env found - creating one from .env.example.
+    copy .env.example .env >nul
+    echo.
+    echo IMPORTANT: .env was just created with placeholder values.
+    echo Opening it in Notepad now - paste your real LLM_API_KEY, save, and close it.
+    echo.
+    notepad .env
+) else (
+    echo [5/7] .env already exists, skipping.
+)
+
+REM --- 6. Run the retrieval evaluation (auto-tunes ALPHA) ---
+echo [6/7] Running retrieval evaluation (auto-tunes ALPHA)...
+python evaluation\evaluate_retrieval.py
+if errorlevel 1 (
+    echo.
+    echo WARNING: evaluation failed or was skipped. The app will fall back to
+    echo the default ALPHA=0.6 - this is not a fatal error, continuing.
+)
+
+REM --- 7. Build the vector store ---
+echo [7/7] Building the vector store...
+python 05_create_chroma_store.py
+if errorlevel 1 (
+    echo.
+    echo ERROR: building the vector store failed. Check the error above.
+    pause
+    exit /b 1
+)
+
+echo.
+echo ============================================
+echo   Setup complete!
+echo ============================================
+echo.
+set /p LAUNCH="Launch the app now with 'streamlit run streamlit_app.py'? (Y/N): "
+if /i "%LAUNCH%"=="Y" (
+    streamlit run streamlit_app.py
+) else (
+    echo You can launch it anytime with: streamlit run streamlit_app.py
+    pause
+)

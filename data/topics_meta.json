@@ -1,0 +1,139 @@
+[
+  {
+    "category_key": "basics",
+    "category": "🔤 Basics",
+    "topics": [
+      "Arithmetic Operators",
+      "Booleans and None",
+      "Comments and Docstrings",
+      "Comparison and Logical Operators",
+      "Conditional Statements (if / elif / else)",
+      "For and While Loops",
+      "Nested if Statements",
+      "Python 2 print Statement",
+      "Reading User Input",
+      "The print() Function",
+      "Type Casting",
+      "Variables and Data Types"
+    ]
+  },
+  {
+    "category_key": "data_structures",
+    "category": "📦 Data Structures",
+    "topics": [
+      "Common String Methods",
+      "Dictionaries",
+      "Dictionary Comprehensions",
+      "List Comprehensions",
+      "Lists and List Methods",
+      "Sequence Slicing",
+      "Sets",
+      "Sorting with sorted() and sort()",
+      "Tuples",
+      "Unpacking and the * Operator"
+    ]
+  },
+  {
+    "category_key": "functions_functional",
+    "category": "🧩 Functions",
+    "topics": [
+      "Closures",
+      "Decorators",
+      "Functions, Arguments, and Return Values",
+      "Generators and yield",
+      "Lambda Functions",
+      "Recursion",
+      "map(), filter(), and reduce()"
+    ]
+  },
+  {
+    "category_key": "oop",
+    "category": "🏛️ OOP",
+    "topics": [
+      "Abstract Classes",
+      "Classes and Objects",
+      "Dataclasses",
+      "Encapsulation",
+      "Inheritance",
+      "Magic (Dunder) Methods",
+      "Polymorphism",
+      "Properties",
+      "Static Methods and Class Methods"
+    ]
+  },
+  {
+    "category_key": "errors_files",
+    "category": "🛡️ Errors & Files",
+    "topics": [
+      "Context Managers (with statement)",
+      "Custom Exceptions",
+      "Error Handling with try / except",
+      "Reading and Writing Files",
+      "The os Module",
+      "Working with CSV Files",
+      "Working with JSON",
+      "Working with Paths using pathlib"
+    ]
+  },
+  {
+    "category_key": "modules_packages",
+    "category": "📚 Modules & Packages",
+    "topics": [
+      "Command-Line Arguments with argparse",
+      "Installing Packages with pip",
+      "Making HTTP Requests (urllib.request)",
+      "Modules and Imports",
+      "Packages and __init__.py",
+      "The datetime Module",
+      "The math and random Modules",
+      "distutils Module (Deprecated)",
+      "urllib2 Module (Python 2, Removed)"
+    ]
+  },
+  {
+    "category_key": "concurrency",
+    "category": "⚡ Concurrency",
+    "topics": [
+      "Multiprocessing Basics",
+      "The Global Interpreter Lock (GIL)",
+      "The queue Module",
+      "Threading Basics",
+      "async and await"
+    ]
+  },
+  {
+    "category_key": "professional_tools",
+    "category": "🛠️ Pro Tools",
+    "topics": [
+      "Regular Expressions with re",
+      "String Formatting with f-strings",
+      "The Walrus Operator (:=)",
+      "The itertools and collections Modules",
+      "The logging Module",
+      "Type Hints",
+      "Unit Testing with unittest / pytest",
+      "enumerate() and zip()"
+    ]
+  },
+  {
+    "category_key": "advanced",
+    "category": "🚀 Advanced",
+    "topics": [
+      "Advanced Generators (yield from, send)",
+      "Advanced Type Hints (Optional, Union, Generic)",
+      "Bytes, Strings, and Encoding",
+      "Caching with functools.lru_cache",
+      "Custom Context Managers with contextlib",
+      "Descriptors",
+      "Exception Chaining (raise ... from)",
+      "Iterators and the Iterator Protocol",
+      "Method Resolution Order and super()",
+      "Structural Pattern Matching (match/case)",
+      "The Singleton Design Pattern",
+      "The enum Module",
+      "collections.namedtuple",
+      "copy vs deepcopy",
+      "functools.partial"
+    ]
+  }
+]

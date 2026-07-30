@@ -1,0 +1,1260 @@
+[
+  {
+    "id": "sum_of_list",
+    "title": "Sum of a List",
+    "topic": "Lists",
+    "difficulty": "Easy",
+    "question": "Write a function sum_list(numbers) that returns the sum of all numbers in the list, without using the built-in sum() function.",
+    "solution_code": "def sum_list(numbers):\n    total = 0\n    for n in numbers:\n        total += n\n    return total\n\nprint(sum_list([1, 2, 3, 4]))  # 10",
+    "explanation": "Start a running total at 0, loop over every number in the list, and add each one to the total. Return the total once the loop finishes.",
+    "hint": "Start a running total at 0 and add each number to it inside the loop."
+  },
+  {
+    "id": "find_max",
+    "title": "Find the Maximum",
+    "topic": "Lists",
+    "difficulty": "Easy",
+    "question": "Write a function find_max(numbers) that returns the largest number in a list, without using the built-in max() function.",
+    "solution_code": "def find_max(numbers):\n    largest = numbers[0]\n    for n in numbers:\n        if n > largest:\n            largest = n\n    return largest\n\nprint(find_max([3, 7, 2, 9, 4]))  # 9",
+    "explanation": "Assume the first item is the largest so far, then compare every other item against it, updating whenever you find something bigger.",
+    "hint": "Assume the first item is the largest so far, then compare every other item against it."
+  },
+  {
+    "id": "remove_duplicates",
+    "title": "Remove Duplicates",
+    "topic": "Lists",
+    "difficulty": "Medium",
+    "question": "Write a function remove_duplicates(items) that returns a new list with duplicate values removed, keeping the original order of first appearance.",
+    "solution_code": "def remove_duplicates(items):\n    seen = set()\n    result = []\n    for item in items:\n        if item not in seen:\n            seen.add(item)\n            result.append(item)\n    return result\n\nprint(remove_duplicates([1, 2, 2, 3, 1, 4]))  # [1, 2, 3, 4]",
+    "explanation": "A plain set() would remove duplicates but lose order. Tracking 'seen' items separately while building a new list preserves the original order.",
+    "hint": "Track which items you've already seen with a set while building a new list."
+  },
+  {
+    "id": "reverse_string",
+    "title": "Reverse a String",
+    "topic": "Strings",
+    "difficulty": "Easy",
+    "question": "Write a function reverse_string(text) that returns the input string reversed, without using slicing ([::-1]).",
+    "solution_code": "def reverse_string(text):\n    result = \"\"\n    for char in text:\n        result = char + result\n    return result\n\nprint(reverse_string(\"hello\"))  # olleh",
+    "explanation": "Build the result by placing each new character BEFORE the ones already collected, which naturally reverses the order.",
+    "hint": "Build the result by placing each new character before the ones you've already collected."
+  },
+  {
+    "id": "is_palindrome",
+    "title": "Check for a Palindrome",
+    "topic": "Strings",
+    "difficulty": "Easy",
+    "question": "Write a function is_palindrome(text) that returns True if a word reads the same forwards and backwards (ignore case).",
+    "solution_code": "def is_palindrome(text):\n    text = text.lower()\n    return text == text[::-1]\n\nprint(is_palindrome(\"Level\"))   # True\nprint(is_palindrome(\"Python\"))  # False",
+    "explanation": "Lowercase the string so the comparison isn't case-sensitive, then compare it to its own reversed version using slicing.",
+    "hint": "Compare the lowercased string to its own reversed version."
+  },
+  {
+    "id": "count_vowels",
+    "title": "Count the Vowels",
+    "topic": "Strings",
+    "difficulty": "Medium",
+    "question": "Write a function count_vowels(text) that returns how many vowels (a, e, i, o, u — case-insensitive) appear in a string.",
+    "solution_code": "def count_vowels(text):\n    vowels = \"aeiou\"\n    count = 0\n    for char in text.lower():\n        if char in vowels:\n            count += 1\n    return count\n\nprint(count_vowels(\"Hello World\"))  # 3",
+    "explanation": "Lowercase the text first so 'A' and 'a' are treated the same, then check each character against a string of vowels using the `in` operator.",
+    "hint": "Lowercase the text first, then check each character against a string of vowels."
+  },
+  {
+    "id": "fizzbuzz",
+    "title": "FizzBuzz",
+    "topic": "Loops",
+    "difficulty": "Easy",
+    "question": "Print numbers from 1 to 20. For multiples of 3 print 'Fizz', for multiples of 5 print 'Buzz', and for multiples of both print 'FizzBuzz'.",
+    "solution_code": "for n in range(1, 21):\n    if n % 15 == 0:\n        print(\"FizzBuzz\")\n    elif n % 3 == 0:\n        print(\"Fizz\")\n    elif n % 5 == 0:\n        print(\"Buzz\")\n    else:\n        print(n)",
+    "explanation": "Check the multiple-of-15 case (both 3 and 5) FIRST, since 15 is also a multiple of 3 and 5 individually — checking it last would mean it's never reached.",
+    "hint": "Check the 'divisible by both' case before the individual 3 and 5 cases."
+  },
+  {
+    "id": "count_down",
+    "title": "Countdown Timer",
+    "topic": "Loops",
+    "difficulty": "Easy",
+    "question": "Write a function countdown(n) that prints numbers from n down to 1, then prints 'Liftoff!'.",
+    "solution_code": "def countdown(n):\n    while n >= 1:\n        print(n)\n        n -= 1\n    print(\"Liftoff!\")\n\ncountdown(3)  # 3, 2, 1, Liftoff!",
+    "explanation": "A while loop is a natural fit here since you're counting down by a fixed step until a condition (n reaching 0) becomes false.",
+    "hint": "A while loop that decreases n by 1 each time fits naturally here."
+  },
+  {
+    "id": "multiplication_table",
+    "title": "Multiplication Table",
+    "topic": "Loops",
+    "difficulty": "Medium",
+    "question": "Write a function multiplication_table(n) that prints the multiplication table of n from 1 to 10 (e.g. '3 x 1 = 3').",
+    "solution_code": "def multiplication_table(n):\n    for i in range(1, 11):\n        print(f\"{n} x {i} = {n * i}\")\n\nmultiplication_table(3)",
+    "explanation": "Loop i from 1 to 10 using range(1, 11), and print the formatted line each time using an f-string.",
+    "hint": "Loop i from 1 to 10 and print n * i each time."
+  },
+  {
+    "id": "sum_of_digits",
+    "title": "Sum of Digits",
+    "topic": "Loops",
+    "difficulty": "Medium",
+    "question": "Write a function sum_of_digits(n) that returns the sum of the digits of a positive integer (e.g. 123 -> 1+2+3 = 6).",
+    "solution_code": "def sum_of_digits(n):\n    total = 0\n    while n > 0:\n        total += n % 10\n        n //= 10\n    return total\n\nprint(sum_of_digits(123))  # 6",
+    "explanation": "n % 10 peels off the last digit, and n //= 10 removes that digit from the number. Repeating this until n reaches 0 processes every digit.",
+    "hint": "Use % 10 to grab the last digit and // 10 to remove it, in a loop."
+  },
+  {
+    "id": "is_prime",
+    "title": "Check if Prime",
+    "topic": "Loops",
+    "difficulty": "Medium",
+    "question": "Write a function is_prime(n) that returns True if n is a prime number (greater than 1, only divisible by 1 and itself), False otherwise.",
+    "solution_code": "def is_prime(n):\n    if n < 2:\n        return False\n    for i in range(2, int(n ** 0.5) + 1):\n        if n % i == 0:\n            return False\n    return True\n\nprint(is_prime(17))  # True\nprint(is_prime(15))  # False",
+    "explanation": "You only need to check divisors up to the square root of n — if n has a factor larger than its square root, it must also have one smaller than it, so checking further is redundant.",
+    "hint": "You only need to check divisors up to the square root of n."
+  },
+  {
+    "id": "fibonacci_sequence",
+    "title": "Fibonacci Sequence",
+    "topic": "Loops",
+    "difficulty": "Medium",
+    "question": "Write a function fibonacci(n) that returns a list of the first n Fibonacci numbers (each number is the sum of the two before it, starting 0, 1).",
+    "solution_code": "def fibonacci(n):\n    sequence = [0, 1]\n    while len(sequence) < n:\n        sequence.append(sequence[-1] + sequence[-2])\n    return sequence[:n]\n\nprint(fibonacci(6))  # [0, 1, 1, 2, 3, 5]",
+    "explanation": "Start with the two known first terms, then keep appending the sum of the last two items until the list is the requested length.",
+    "hint": "Start with [0, 1] and keep appending the sum of the last two numbers."
+  },
+  {
+    "id": "second_largest",
+    "title": "Second Largest Number",
+    "topic": "Lists",
+    "difficulty": "Medium",
+    "question": "Write a function second_largest(numbers) that returns the second-largest unique value in a list, without sorting the whole list.",
+    "solution_code": "def second_largest(numbers):\n    first = second = float(\"-inf\")\n    for n in numbers:\n        if n > first:\n            first, second = n, first\n        elif first > n > second:\n            second = n\n    return second\n\nprint(second_largest([5, 1, 9, 9, 3]))  # 5",
+    "explanation": "Track the two largest values seen so far in a single pass. Note duplicates of the largest value (like the two 9s) don't count as a second distinct value.",
+    "hint": "Track both the largest and second-largest value as you scan once."
+  },
+  {
+    "id": "flatten_list",
+    "title": "Flatten a Nested List",
+    "topic": "Lists",
+    "difficulty": "Medium",
+    "question": "Write a function flatten(nested) that turns a list of lists into a single flat list, e.g. [[1, 2], [3], [4, 5]] -> [1, 2, 3, 4, 5].",
+    "solution_code": "def flatten(nested):\n    result = []\n    for sublist in nested:\n        for item in sublist:\n            result.append(item)\n    return result\n\nprint(flatten([[1, 2], [3], [4, 5]]))  # [1, 2, 3, 4, 5]",
+    "explanation": "A nested loop visits every sub-list, then every item inside it, appending each individual item to one flat result list.",
+    "hint": "Use a nested loop: outer loop over sublists, inner loop over their items."
+  },
+  {
+    "id": "chunk_string",
+    "title": "Chunk a String",
+    "topic": "Strings",
+    "difficulty": "Medium",
+    "question": "Write a function chunk(text, size) that splits a string into a list of pieces, each of length `size` (the last piece may be shorter).",
+    "solution_code": "def chunk(text, size):\n    return [text[i:i + size] for i in range(0, len(text), size)]\n\nprint(chunk(\"HelloWorld\", 3))  # ['Hel', 'lo ', ...] -> ['Hel', 'loW', 'orl', 'd']",
+    "explanation": "Step through the string in jumps of `size` using range(0, len(text), size), slicing out one chunk starting at each stepped index.",
+    "hint": "Step through the string in jumps of `size` using range(0, len(text), size)."
+  },
+  {
+    "id": "capitalize_words",
+    "title": "Capitalize Each Word",
+    "topic": "Strings",
+    "difficulty": "Easy",
+    "question": "Write a function capitalize_words(sentence) that capitalizes the first letter of every word in a sentence, without using str.title().",
+    "solution_code": "def capitalize_words(sentence):\n    words = sentence.split()\n    capitalized = [w[0].upper() + w[1:] for w in words]\n    return \" \".join(capitalized)\n\nprint(capitalize_words(\"hello there world\"))  # Hello There World",
+    "explanation": "Split the sentence into individual words, uppercase just the first character of each one while keeping the rest as-is, then rejoin with spaces.",
+    "hint": "Split into words, uppercase just the first letter of each, then rejoin."
+  },
+  {
+    "id": "word_frequency",
+    "title": "Word Frequency Counter",
+    "topic": "Dictionaries",
+    "difficulty": "Easy",
+    "question": "Write a function word_frequency(text) that returns a dictionary mapping each word in a sentence to how many times it appears.",
+    "solution_code": "def word_frequency(text):\n    counts = {}\n    for word in text.lower().split():\n        counts[word] = counts.get(word, 0) + 1\n    return counts\n\nprint(word_frequency(\"the cat and the dog\"))  # {'the': 2, 'cat': 1, 'and': 1, 'dog': 1}",
+    "explanation": "counts.get(word, 0) returns 0 for a word not seen yet, so adding 1 works whether it's the first time or a repeat — no need to check membership first.",
+    "hint": "counts.get(word, 0) + 1 works whether it's the first time or a repeat."
+  },
+  {
+    "id": "invert_dict",
+    "title": "Invert a Dictionary",
+    "topic": "Dictionaries",
+    "difficulty": "Easy",
+    "question": "Write a function invert(d) that swaps a dictionary's keys and values, so {'a': 1, 'b': 2} becomes {1: 'a', 2: 'b'}.",
+    "solution_code": "def invert(d):\n    return {value: key for key, value in d.items()}\n\nprint(invert({\"a\": 1, \"b\": 2}))  # {1: 'a', 2: 'b'}",
+    "explanation": "A dict comprehension swaps each key/value pair. This only works cleanly if the original values are themselves unique and hashable.",
+    "hint": "A dict comprehension can swap keys and values in one line."
+  },
+  {
+    "id": "merge_dicts",
+    "title": "Merge Two Dictionaries",
+    "topic": "Dictionaries",
+    "difficulty": "Medium",
+    "question": "Write a function merge_sum(d1, d2) that merges two dictionaries of numbers, adding the values together for any key that appears in both.",
+    "solution_code": "def merge_sum(d1, d2):\n    result = dict(d1)\n    for key, value in d2.items():\n        result[key] = result.get(key, 0) + value\n    return result\n\nprint(merge_sum({\"a\": 1, \"b\": 2}, {\"b\": 3, \"c\": 4}))  # {'a': 1, 'b': 5, 'c': 4}",
+    "explanation": "Start from a copy of the first dict, then for each key in the second dict, add its value to whatever is already there (or 0 if the key is new).",
+    "hint": "Start from a copy of the first dict, then add the second dict's values on top."
+  },
+  {
+    "id": "group_by_length",
+    "title": "Group Words by Length",
+    "topic": "Dictionaries",
+    "difficulty": "Medium",
+    "question": "Write a function group_by_length(words) that returns a dictionary mapping each word length to a list of words with that length.",
+    "solution_code": "def group_by_length(words):\n    groups = {}\n    for word in words:\n        groups.setdefault(len(word), []).append(word)\n    return groups\n\nprint(group_by_length([\"a\", \"be\", \"cat\", \"do\", \"sun\"]))\n# {1: ['a'], 2: ['be', 'do'], 3: ['cat', 'sun']}",
+    "explanation": "setdefault(key, []) returns the existing list for that key, or creates and returns a new empty list if the key isn't there yet — either way you can immediately .append() to it.",
+    "hint": "dict.setdefault(key, []) creates an empty list only if the key is new."
+  },
+  {
+    "id": "is_even",
+    "title": "Check if Even",
+    "topic": "Functions",
+    "difficulty": "Easy",
+    "question": "Write a function is_even(n) that returns True if a number is even, False otherwise, using only one line in the function body.",
+    "solution_code": "def is_even(n):\n    return n % 2 == 0\n\nprint(is_even(4))   # True\nprint(is_even(7))   # False",
+    "explanation": "The comparison n % 2 == 0 is itself a boolean expression, so it can be returned directly without an if/else block.",
+    "hint": "n % 2 == 0 is itself a boolean expression you can return directly."
+  },
+  {
+    "id": "apply_twice",
+    "title": "Apply a Function Twice",
+    "topic": "Functions",
+    "difficulty": "Medium",
+    "question": "Write a function apply_twice(func, value) that applies a given function to a value two times in a row, e.g. apply_twice(lambda x: x * 2, 3) should return 12.",
+    "solution_code": "def apply_twice(func, value):\n    return func(func(value))\n\nprint(apply_twice(lambda x: x * 2, 3))  # 12 (3*2=6, then 6*2=12)",
+    "explanation": "Functions are values in Python, so func can be passed in as an argument like any other value, and called (even called on its own result) inside the function body.",
+    "hint": "Just call func on the result of calling func — func(func(value))."
+  },
+  {
+    "id": "average_of_args",
+    "title": "Average of Any Number of Arguments",
+    "topic": "Functions",
+    "difficulty": "Easy",
+    "question": "Write a function average(*numbers) that accepts any number of arguments and returns their average.",
+    "solution_code": "def average(*numbers):\n    return sum(numbers) / len(numbers)\n\nprint(average(1, 2, 3, 4))   # 2.5\nprint(average(10, 20))       # 15.0",
+    "explanation": "*numbers collects any number of positional arguments into a tuple, so the function works whether it's called with 2 arguments or 10.",
+    "hint": "*numbers collects any number of arguments into a tuple you can sum()."
+  },
+  {
+    "id": "memoized_factorial",
+    "title": "Factorial with Memoization",
+    "topic": "Functions",
+    "difficulty": "Medium",
+    "question": "Write a recursive function factorial(n) that computes n!, and cache previously computed results in a dictionary so repeated calls with the same n are instant.",
+    "solution_code": "_cache = {}\n\ndef factorial(n):\n    if n in _cache:\n        return _cache[n]\n    if n <= 1:\n        result = 1\n    else:\n        result = n * factorial(n - 1)\n    _cache[n] = result\n    return result\n\nprint(factorial(5))  # 120\nprint(factorial(5))  # 120 — instant, read from _cache this time",
+    "explanation": "Before computing, check if the answer for this exact n was already stored. This 'memoization' pattern avoids redoing the same recursive work more than once.",
+    "hint": "Check a dictionary cache before computing; store the result after computing."
+  },
+  {
+    "id": "two_sum",
+    "title": "Two Sum",
+    "topic": "Dictionaries",
+    "difficulty": "Medium",
+    "question": "Write a function two_sum(numbers, target) that returns the indices of the two numbers in a list that add up to target, in O(n) time (don't use a brute-force double loop).",
+    "solution_code": "def two_sum(numbers, target):\n    seen = {}\n    for i, n in enumerate(numbers):\n        complement = target - n\n        if complement in seen:\n            return [seen[complement], i]\n        seen[n] = i\n    return None\n\nprint(two_sum([2, 7, 11, 15], 9))  # [0, 1]",
+    "explanation": "Instead of checking every pair (O(n^2)), store each number's index as you go. For each new number, check if its complement (target - n) was already seen — that's an O(1) dictionary lookup instead of a nested loop.",
+    "hint": "Store each number's index in a dict as you go, and check for its complement."
+  },
+  {
+    "id": "find_duplicates",
+    "title": "Find All Duplicates",
+    "topic": "Dictionaries",
+    "difficulty": "Easy",
+    "question": "Write a function find_duplicates(items) that returns a list of values that appear more than once in the input list.",
+    "solution_code": "def find_duplicates(items):\n    counts = {}\n    for item in items:\n        counts[item] = counts.get(item, 0) + 1\n    return [item for item, count in counts.items() if count > 1]\n\nprint(find_duplicates([1, 2, 2, 3, 3, 3, 4]))  # [2, 3]",
+    "explanation": "Count every item first with a dictionary, then filter down to only the keys whose count is greater than one.",
+    "hint": "Count every item first, then filter to counts greater than one."
+  },
+  {
+    "id": "compare_char_frequency",
+    "title": "Are Two Strings Anagrams? (Dictionary Version)",
+    "topic": "Dictionaries",
+    "difficulty": "Medium",
+    "question": "Write a function is_anagram(a, b) that returns True if two strings are anagrams of each other (same letters, same counts, different order), using a dictionary of character counts.",
+    "solution_code": "def is_anagram(a, b):\n    def char_counts(s):\n        counts = {}\n        for ch in s.replace(\" \", \"\").lower():\n            counts[ch] = counts.get(ch, 0) + 1\n        return counts\n\n    return char_counts(a) == char_counts(b)\n\nprint(is_anagram(\"listen\", \"silent\"))  # True\nprint(is_anagram(\"hello\", \"world\"))    # False",
+    "explanation": "Two strings are anagrams exactly when they have the same letters with the same frequencies. Building a character-count dictionary for each and comparing the dictionaries directly checks this.",
+    "hint": "Build a character-count dictionary for each string and compare the two dicts."
+  },
+  {
+    "id": "compose_functions",
+    "title": "Compose Two Functions",
+    "topic": "Functions",
+    "difficulty": "Medium",
+    "question": "Write a function compose(f, g) that returns a new function equal to f(g(x)) — applying g first, then f to the result.",
+    "solution_code": "def compose(f, g):\n    def combined(x):\n        return f(g(x))\n    return combined\n\nadd_one = lambda x: x + 1\ndouble = lambda x: x * 2\n\ndouble_then_add_one = compose(add_one, double)\nprint(double_then_add_one(3))  # double(3)=6, add_one(6)=7",
+    "explanation": "compose returns a brand-new function (a closure) that, when called, runs g on the input first and feeds that result into f — this is a common functional-programming building block.",
+    "hint": "Return a new function that calls g first, then passes that result to f."
+  },
+  {
+    "id": "min_max_average",
+    "title": "Return Multiple Values from a Function",
+    "topic": "Functions",
+    "difficulty": "Easy",
+    "question": "Write a function stats(numbers) that returns the minimum, maximum, and average of a list, all at once.",
+    "solution_code": "def stats(numbers):\n    return min(numbers), max(numbers), sum(numbers) / len(numbers)\n\nlow, high, avg = stats([4, 8, 15, 16, 23, 42])\nprint(low, high, avg)  # 4 42 18.0",
+    "explanation": "A function can return several values separated by commas — Python packs them into a tuple automatically, which the caller can unpack directly into separate variables.",
+    "hint": "A function can return several values separated by commas as one tuple."
+  },
+  {
+    "id": "print_triangle",
+    "title": "Print a Number Triangle",
+    "topic": "Loops",
+    "difficulty": "Easy",
+    "question": "Write a function print_triangle(n) that prints a triangle of numbers, where row i contains the numbers 1 through i (e.g. n=3 prints '1', '1 2', '1 2 3').",
+    "solution_code": "def print_triangle(n):\n    for i in range(1, n + 1):\n        row = \" \".join(str(x) for x in range(1, i + 1))\n        print(row)\n\nprint_triangle(3)\n# 1\n# 1 2\n# 1 2 3",
+    "explanation": "The outer loop controls the row number, and for each row, an inner range(1, i + 1) generates that row's numbers, joined into one printed line.",
+    "hint": "Outer loop controls the row number; inner range(1, i+1) builds that row."
+  },
+  {
+    "id": "gcd_iterative",
+    "title": "Greatest Common Divisor (Iterative)",
+    "topic": "Loops",
+    "difficulty": "Medium",
+    "question": "Write a function gcd(a, b) that returns the greatest common divisor of two numbers using a while loop (the Euclidean algorithm), without using math.gcd().",
+    "solution_code": "def gcd(a, b):\n    while b != 0:\n        a, b = b, a % b\n    return a\n\nprint(gcd(48, 18))  # 6",
+    "explanation": "The Euclidean algorithm repeatedly replaces (a, b) with (b, a % b) until b becomes 0 — at that point, a holds the greatest common divisor.",
+    "hint": "Repeatedly replace (a, b) with (b, a % b) until b becomes 0."
+  },
+  {
+    "id": "valid_parentheses",
+    "title": "Valid Parentheses",
+    "topic": "Strings",
+    "difficulty": "Medium",
+    "question": "Write a function is_valid(s) that returns True if a string of brackets '()[]{}' is properly balanced and nested, False otherwise.",
+    "solution_code": "def is_valid(s):\n    pairs = {\")\": \"(\", \"]\": \"[\", \"}\": \"{\"}\n    stack = []\n    for ch in s:\n        if ch in \"([{\":\n            stack.append(ch)\n        elif ch in pairs:\n            if not stack or stack.pop() != pairs[ch]:\n                return False\n    return not stack\n\nprint(is_valid(\"({[]})\"))  # True\nprint(is_valid(\"(]\"))       # False",
+    "explanation": "A stack (a plain list used with append/pop) is the natural tool here: push every opening bracket, and on a closing bracket, check it matches the most recently opened one. Leftover unmatched brackets at the end mean it's invalid.",
+    "hint": "Use a list as a stack: push openers, and match/pop on closers."
+  },
+  {
+    "id": "caesar_cipher",
+    "title": "Caesar Cipher",
+    "topic": "Strings",
+    "difficulty": "Medium",
+    "question": "Write a function caesar_encrypt(text, shift) that shifts every letter in text forward by `shift` positions in the alphabet (wrapping z back to a), leaving non-letters unchanged.",
+    "solution_code": "def caesar_encrypt(text, shift):\n    result = \"\"\n    for ch in text:\n        if ch.isalpha():\n            base = ord(\"A\") if ch.isupper() else ord(\"a\")\n            result += chr((ord(ch) - base + shift) % 26 + base)\n        else:\n            result += ch\n    return result\n\nprint(caesar_encrypt(\"Hello, World!\", 3))  # Khoor, Zruog!",
+    "explanation": "ord() converts a letter to its numeric code; subtracting the alphabet's starting letter gives a 0-25 position, shifting and wrapping with % 26 handles going past 'z', and chr() converts back to a letter.",
+    "hint": "Convert each letter to a 0-25 position with ord(), shift with %26, convert back with chr()."
+  },
+  {
+    "id": "longest_word",
+    "title": "Find the Longest Word",
+    "topic": "Strings",
+    "difficulty": "Easy",
+    "question": "Write a function longest_word(sentence) that returns the longest word in a sentence (if there's a tie, return the first one).",
+    "solution_code": "def longest_word(sentence):\n    words = sentence.split()\n    longest = words[0]\n    for word in words:\n        if len(word) > len(longest):\n            longest = word\n    return longest\n\nprint(longest_word(\"the quick brown fox\"))  # quick",
+    "explanation": "Track the longest word seen so far, starting with the first word, and replace it only when a strictly longer word is found — ties keep the earlier word automatically.",
+    "hint": "Track the longest word seen so far, replacing it only when you find a longer one."
+  },
+  {
+    "id": "bubble_sort",
+    "title": "Bubble Sort",
+    "topic": "Sorting & Searching",
+    "difficulty": "Medium",
+    "question": "Write a function bubble_sort(numbers) that sorts a list in ascending order using the bubble sort algorithm, without using sorted() or .sort().",
+    "solution_code": "def bubble_sort(numbers):\n    numbers = numbers.copy()\n    n = len(numbers)\n    for i in range(n):\n        for j in range(n - i - 1):\n            if numbers[j] > numbers[j + 1]:\n                numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\n    return numbers\n\nprint(bubble_sort([5, 2, 9, 1, 5]))  # [1, 2, 5, 5, 9]",
+    "explanation": "Repeatedly compare each pair of neighbors and swap them if out of order. After each full pass, the largest remaining unsorted value 'bubbles up' to its correct position, so the inner loop shrinks by one each time.",
+    "hint": "Repeatedly swap adjacent out-of-order pairs; the largest 'bubbles' to the end each pass."
+  },
+  {
+    "id": "binary_search",
+    "title": "Binary Search",
+    "topic": "Sorting & Searching",
+    "difficulty": "Medium",
+    "question": "Write a function binary_search(sorted_list, target) that returns the index of target in a SORTED list, or -1 if it's not present, without checking every element one by one.",
+    "solution_code": "def binary_search(sorted_list, target):\n    low, high = 0, len(sorted_list) - 1\n    while low <= high:\n        mid = (low + high) // 2\n        if sorted_list[mid] == target:\n            return mid\n        elif sorted_list[mid] < target:\n            low = mid + 1\n        else:\n            high = mid - 1\n    return -1\n\nprint(binary_search([1, 3, 5, 7, 9, 11], 7))  # 3",
+    "explanation": "Since the list is sorted, checking the middle element lets you discard half the remaining list each time — this is what makes binary search dramatically faster than scanning one element at a time for large lists.",
+    "hint": "Compare against the middle element and discard half the list each time."
+  },
+  {
+    "id": "selection_sort",
+    "title": "Selection Sort",
+    "topic": "Sorting & Searching",
+    "difficulty": "Medium",
+    "question": "Write a function selection_sort(numbers) that sorts a list by repeatedly finding the minimum of the unsorted portion and moving it to the front.",
+    "solution_code": "def selection_sort(numbers):\n    numbers = numbers.copy()\n    n = len(numbers)\n    for i in range(n):\n        min_index = i\n        for j in range(i + 1, n):\n            if numbers[j] < numbers[min_index]:\n                min_index = j\n        numbers[i], numbers[min_index] = numbers[min_index], numbers[i]\n    return numbers\n\nprint(selection_sort([64, 25, 12, 22, 11]))  # [11, 12, 22, 25, 64]",
+    "explanation": "For each position starting from the front, scan the rest of the list to find the smallest remaining value, then swap it into place — the sorted portion grows by one correct element each pass.",
+    "hint": "Find the minimum of the unsorted part and swap it to the front each pass."
+  },
+  {
+    "id": "linear_search",
+    "title": "Linear Search",
+    "topic": "Sorting & Searching",
+    "difficulty": "Easy",
+    "question": "Write a function linear_search(items, target) that returns the index of target in an UNSORTED list, or -1 if it isn't found.",
+    "solution_code": "def linear_search(items, target):\n    for i, item in enumerate(items):\n        if item == target:\n            return i\n    return -1\n\nprint(linear_search([4, 2, 7, 1], 7))  # 2\nprint(linear_search([4, 2, 7, 1], 9))  # -1",
+    "explanation": "Without an ordering guarantee, there's no shortcut — you have to check items one at a time until you find a match or run out of items to check.",
+    "hint": "Without sorting, you must check items one at a time from the start."
+  },
+  {
+    "id": "merge_sorted_lists",
+    "title": "Merge Two Sorted Lists",
+    "topic": "Sorting & Searching",
+    "difficulty": "Medium",
+    "question": "Write a function merge_sorted(a, b) that merges two already-sorted lists into a single sorted list, without calling sorted() on the combined result.",
+    "solution_code": "def merge_sorted(a, b):\n    result = []\n    i = j = 0\n    while i < len(a) and j < len(b):\n        if a[i] <= b[j]:\n            result.append(a[i])\n            i += 1\n        else:\n            result.append(b[j])\n            j += 1\n    result.extend(a[i:])\n    result.extend(b[j:])\n    return result\n\nprint(merge_sorted([1, 3, 5], [2, 4, 6]))  # [1, 2, 3, 4, 5, 6]",
+    "explanation": "Since both inputs are already sorted, you only ever need to compare the current front of each list and take the smaller one — this 'two pointer' approach never needs to re-sort anything.",
+    "hint": "Compare the current front of both lists and take the smaller one each step."
+  },
+  {
+    "id": "kth_smallest",
+    "title": "Kth Smallest Element",
+    "topic": "Sorting & Searching",
+    "difficulty": "Easy",
+    "question": "Write a function kth_smallest(numbers, k) that returns the k-th smallest value in a list (k=1 means the smallest).",
+    "solution_code": "def kth_smallest(numbers, k):\n    return sorted(numbers)[k - 1]\n\nprint(kth_smallest([7, 2, 9, 4, 1], 2))  # 2",
+    "explanation": "Sorting the list puts every value in order, so the k-th smallest is simply at index k-1 (since indexing starts at 0 but 'k-th' counting starts at 1).",
+    "hint": "Sorting the list puts the k-th smallest directly at index k-1."
+  },
+  {
+    "id": "fibonacci_recursive",
+    "title": "Fibonacci (Recursive)",
+    "topic": "Recursion",
+    "difficulty": "Medium",
+    "question": "Write a recursive function fib(n) that returns the n-th Fibonacci number (fib(0)=0, fib(1)=1, and each later number is the sum of the two before it).",
+    "solution_code": "def fib(n):\n    if n <= 1:\n        return n\n    return fib(n - 1) + fib(n - 2)\n\nprint(fib(6))  # 8",
+    "explanation": "The base cases (n=0 or n=1) stop the recursion; every other call breaks the problem into two smaller Fibonacci calls, matching the mathematical definition directly.",
+    "hint": "Base cases are n=0 and n=1; otherwise return fib(n-1) + fib(n-2)."
+  },
+  {
+    "id": "sum_list_recursive",
+    "title": "Sum a List Recursively",
+    "topic": "Recursion",
+    "difficulty": "Easy",
+    "question": "Write a recursive function sum_recursive(numbers) that returns the sum of a list, without using a loop or the built-in sum().",
+    "solution_code": "def sum_recursive(numbers):\n    if not numbers:\n        return 0\n    return numbers[0] + sum_recursive(numbers[1:])\n\nprint(sum_recursive([1, 2, 3, 4]))  # 10",
+    "explanation": "The base case is an empty list (sum is 0). Otherwise, add the first item to the recursive sum of everything after it — each call works on a slightly smaller list.",
+    "hint": "Base case is an empty list (sum 0); otherwise numbers[0] + sum of the rest."
+  },
+  {
+    "id": "power_recursive",
+    "title": "Power Function (Recursive)",
+    "topic": "Recursion",
+    "difficulty": "Easy",
+    "question": "Write a recursive function power(base, exponent) that computes base ** exponent without using the ** operator or math.pow().",
+    "solution_code": "def power(base, exponent):\n    if exponent == 0:\n        return 1\n    return base * power(base, exponent - 1)\n\nprint(power(2, 5))  # 32",
+    "explanation": "Any number to the power 0 is 1 (the base case). Otherwise, multiply the base by the result of the same problem with the exponent reduced by one.",
+    "hint": "Base case is exponent 0 (returns 1); otherwise base * power(base, exponent-1)."
+  },
+  {
+    "id": "reverse_string_recursive",
+    "title": "Reverse a String Recursively",
+    "topic": "Recursion",
+    "difficulty": "Easy",
+    "question": "Write a recursive function reverse_recursive(text) that reverses a string, without using slicing ([::-1]) or a loop.",
+    "solution_code": "def reverse_recursive(text):\n    if len(text) <= 1:\n        return text\n    return reverse_recursive(text[1:]) + text[0]\n\nprint(reverse_recursive(\"hello\"))  # olleh",
+    "explanation": "The base case is a string of length 0 or 1 (already 'reversed'). Otherwise, reverse everything after the first character, then place the first character at the very end.",
+    "hint": "Reverse everything after the first character, then put the first character last."
+  },
+  {
+    "id": "gcd_recursive",
+    "title": "GCD (Recursive)",
+    "topic": "Recursion",
+    "difficulty": "Medium",
+    "question": "Write a recursive version of gcd(a, b) using the Euclidean algorithm, without a while loop.",
+    "solution_code": "def gcd(a, b):\n    if b == 0:\n        return a\n    return gcd(b, a % b)\n\nprint(gcd(48, 18))  # 6",
+    "explanation": "This is the same Euclidean idea as the iterative version, expressed recursively: the base case is b=0 (answer is a), otherwise recurse with (b, a % b).",
+    "hint": "Base case is b=0 (return a); otherwise recurse with gcd(b, a % b)."
+  },
+  {
+    "id": "common_elements",
+    "title": "Common Elements Between Two Lists",
+    "topic": "Sets & Tuples",
+    "difficulty": "Easy",
+    "question": "Write a function common_elements(a, b) that returns the elements that appear in both lists, with no duplicates, using sets.",
+    "solution_code": "def common_elements(a, b):\n    return list(set(a) & set(b))\n\nprint(sorted(common_elements([1, 2, 3, 4], [3, 4, 5, 6])))  # [3, 4]",
+    "explanation": "Converting both lists to sets and using the & (intersection) operator finds shared values in one step, without writing a manual nested loop to compare every pair.",
+    "hint": "Convert both lists to sets and use the & (intersection) operator."
+  },
+  {
+    "id": "symmetric_difference",
+    "title": "Symmetric Difference of Two Lists",
+    "topic": "Sets & Tuples",
+    "difficulty": "Medium",
+    "question": "Write a function symmetric_difference(a, b) that returns the elements that are in exactly one of the two lists (not in both).",
+    "solution_code": "def symmetric_difference(a, b):\n    return list(set(a) ^ set(b))\n\nprint(sorted(symmetric_difference([1, 2, 3], [2, 3, 4])))  # [1, 4]",
+    "explanation": "The ^ operator on sets gives the symmetric difference directly: everything in either set, except what's shared by both.",
+    "hint": "The ^ operator on sets gives items in exactly one set, not both."
+  },
+  {
+    "id": "swap_with_tuple",
+    "title": "Swap Two Variables",
+    "topic": "Sets & Tuples",
+    "difficulty": "Easy",
+    "question": "Write code that swaps the values of two variables a and b, using Python's tuple unpacking (no temporary third variable).",
+    "solution_code": "a, b = 5, 10\na, b = b, a\nprint(a, b)  # 10 5",
+    "explanation": "The right-hand side (b, a) builds a tuple with the current values BEFORE any assignment happens, then that tuple is unpacked into a and b — this naturally swaps them in a single line.",
+    "hint": "a, b = b, a builds a tuple of the old values before reassigning."
+  },
+  {
+    "id": "anagram_with_sets",
+    "title": "Same Unique Letters?",
+    "topic": "Sets & Tuples",
+    "difficulty": "Easy",
+    "question": "Write a function same_letters(a, b) that returns True if two words use exactly the same SET of unique letters (ignoring how many times each appears).",
+    "solution_code": "def same_letters(a, b):\n    return set(a.lower()) == set(b.lower())\n\nprint(same_letters(\"listen\", \"tinsel\"))  # True\nprint(same_letters(\"aab\", \"ab\"))          # True — same unique letters",
+    "explanation": "Converting each string to a set automatically drops duplicate letters and ignores order, so comparing the two sets checks only whether the same distinct letters appear in both.",
+    "hint": "Convert both strings to sets of characters and compare them."
+  },
+  {
+    "id": "move_zeroes",
+    "title": "Move Zeroes to the End",
+    "topic": "Lists",
+    "difficulty": "Medium",
+    "question": "Write a function move_zeroes(numbers) that moves all zeroes in a list to the end, while keeping the relative order of the non-zero elements.",
+    "solution_code": "def move_zeroes(numbers):\n    non_zeros = [n for n in numbers if n != 0]\n    zero_count = len(numbers) - len(non_zeros)\n    return non_zeros + [0] * zero_count\n\nprint(move_zeroes([0, 1, 0, 3, 12]))  # [1, 3, 12, 0, 0]",
+    "explanation": "Collect the non-zero values first (this preserves their original relative order automatically), then pad the end with however many zeroes were removed.",
+    "hint": "Collect non-zero values first (keeps their order), then pad with zeros."
+  },
+  {
+    "id": "max_subarray_sum",
+    "title": "Maximum Subarray Sum",
+    "topic": "Lists",
+    "difficulty": "Medium",
+    "question": "Write a function max_subarray(numbers) that returns the largest possible sum of a contiguous subarray within the list (Kadane's algorithm).",
+    "solution_code": "def max_subarray(numbers):\n    best = current = numbers[0]\n    for n in numbers[1:]:\n        current = max(n, current + n)\n        best = max(best, current)\n    return best\n\nprint(max_subarray([-2, 1, -3, 4, -1, 2, 1, -5, 4]))  # 6, from [4, -1, 2, 1]",
+    "explanation": "At each position, decide whether to extend the previous subarray or start fresh from the current number — whichever gives a bigger sum. Track the best sum seen across the whole scan.",
+    "hint": "At each step, decide: extend the current run, or start a new one from here."
+  },
+  {
+    "id": "rotate_list",
+    "title": "Rotate a List",
+    "topic": "Lists",
+    "difficulty": "Easy",
+    "question": "Write a function rotate(numbers, k) that rotates a list to the right by k positions, e.g. rotate([1,2,3,4,5], 2) -> [4,5,1,2,3].",
+    "solution_code": "def rotate(numbers, k):\n    k = k % len(numbers)\n    return numbers[-k:] + numbers[:-k]\n\nprint(rotate([1, 2, 3, 4, 5], 2))  # [4, 5, 1, 2, 3]",
+    "explanation": "k % len(numbers) handles k being larger than the list itself. Slicing off the last k elements and putting them in front of the rest achieves the rotation in one line.",
+    "hint": "Use k % len(numbers), then slice the last k elements to the front."
+  },
+  {
+    "id": "missing_number",
+    "title": "Find the Missing Number",
+    "topic": "Lists",
+    "difficulty": "Medium",
+    "question": "Write a function missing_number(numbers) that finds the missing number in a list containing n distinct numbers from 0 to n (one number is missing).",
+    "solution_code": "def missing_number(numbers):\n    n = len(numbers)\n    expected_sum = n * (n + 1) // 2\n    return expected_sum - sum(numbers)\n\nprint(missing_number([3, 0, 1]))  # 2 — 0,1,2,3 expected, 2 is missing",
+    "explanation": "The sum of 0..n has a known formula (n*(n+1)/2). Subtracting the actual sum of the list from that expected total leaves exactly the missing number.",
+    "hint": "The sum of 0..n has a formula (n*(n+1)/2) — subtract the actual sum from it."
+  },
+  {
+    "id": "class_bank_account",
+    "title": "Build a BankAccount Class",
+    "topic": "OOP",
+    "difficulty": "Easy",
+    "question": "Write a class BankAccount with a balance, and methods deposit(amount) and withdraw(amount) that raises ValueError if withdrawing more than the balance.",
+    "solution_code": "class BankAccount:\n    def __init__(self, balance=0):\n        self.balance = balance\n\n    def deposit(self, amount):\n        self.balance += amount\n\n    def withdraw(self, amount):\n        if amount > self.balance:\n            raise ValueError(\"Insufficient funds\")\n        self.balance -= amount\n\naccount = BankAccount(100)\naccount.deposit(50)\nprint(account.balance)  # 150",
+    "explanation": "Instance attributes (self.balance) hold state per account, and methods validate the operation before mutating that state — a classic small encapsulation example.",
+    "hint": "Store balance as self.balance, and check it before subtracting in withdraw."
+  },
+  {
+    "id": "class_inheritance_shapes",
+    "title": "Shape Hierarchy with Inheritance",
+    "topic": "OOP",
+    "difficulty": "Medium",
+    "question": "Write a base class Shape with an area() method that raises NotImplementedError, then Rectangle and Circle subclasses that each implement area() correctly.",
+    "solution_code": "class Shape:\n    def area(self):\n        raise NotImplementedError\n\nclass Rectangle(Shape):\n    def __init__(self, w, h):\n        self.w, self.h = w, h\n    def area(self):\n        return self.w * self.h\n\nclass Circle(Shape):\n    def __init__(self, r):\n        self.r = r\n    def area(self):\n        return 3.14159 * self.r ** 2\n\nfor shape in [Rectangle(3, 4), Circle(2)]:\n    print(round(shape.area(), 2))",
+    "explanation": "The base class defines a shared contract (every Shape must implement area()), and each subclass provides its own correct formula — the same loop works for any shape type without checking which one it is.",
+    "hint": "Each subclass overrides area() with its own formula."
+  },
+  {
+    "id": "operator_overload_vector",
+    "title": "Overload + for a Vector Class",
+    "topic": "OOP",
+    "difficulty": "Medium",
+    "question": "Write a class Vector(x, y) that supports the + operator, so Vector(1, 2) + Vector(3, 4) returns Vector(4, 6).",
+    "solution_code": "class Vector:\n    def __init__(self, x, y):\n        self.x, self.y = x, y\n\n    def __add__(self, other):\n        return Vector(self.x + other.x, self.y + other.y)\n\n    def __repr__(self):\n        return f\"Vector({self.x}, {self.y})\"\n\nprint(Vector(1, 2) + Vector(3, 4))  # Vector(4, 6)",
+    "explanation": "Defining __add__ lets your own class respond to the + operator directly, using the same magic-method mechanism that built-in types use for arithmetic.",
+    "hint": "Define __add__(self, other) to control what + does for your class."
+  },
+  {
+    "id": "class_counter_instances",
+    "title": "Count Class Instances",
+    "topic": "OOP",
+    "difficulty": "Easy",
+    "question": "Write a class Widget that tracks how many Widget objects have been created, using a class-level attribute.",
+    "solution_code": "class Widget:\n    count = 0\n\n    def __init__(self):\n        Widget.count += 1\n\nWidget()\nWidget()\nWidget()\nprint(Widget.count)  # 3",
+    "explanation": "A class attribute (defined outside __init__) is shared by every instance. Incrementing it inside __init__ means every new object created bumps the same shared counter.",
+    "hint": "A class attribute (outside __init__) is shared by every instance."
+  },
+  {
+    "id": "safe_divide",
+    "title": "Safe Division with Error Handling",
+    "topic": "Error Handling",
+    "difficulty": "Easy",
+    "question": "Write a function safe_divide(a, b) that returns a / b, or the string 'Cannot divide by zero' instead of crashing if b is 0.",
+    "solution_code": "def safe_divide(a, b):\n    try:\n        return a / b\n    except ZeroDivisionError:\n        return \"Cannot divide by zero\"\n\nprint(safe_divide(10, 2))  # 5.0\nprint(safe_divide(10, 0))  # Cannot divide by zero",
+    "explanation": "Wrapping the risky operation in try/except lets the function handle the specific error case gracefully and return a sensible fallback instead of crashing the whole program.",
+    "hint": "Wrap the division in try/except ZeroDivisionError."
+  },
+  {
+    "id": "validate_age_input",
+    "title": "Validate Input with a Custom Exception",
+    "topic": "Error Handling",
+    "difficulty": "Medium",
+    "question": "Write a function set_age(age) that raises a custom InvalidAgeError (a subclass of ValueError) if age is negative or over 150, otherwise returns it unchanged.",
+    "solution_code": "class InvalidAgeError(ValueError):\n    pass\n\ndef set_age(age):\n    if age < 0 or age > 150:\n        raise InvalidAgeError(f\"{age} is not a valid age\")\n    return age\n\nprint(set_age(25))  # 25\n# set_age(-5)        # raises InvalidAgeError",
+    "explanation": "Subclassing ValueError means calling code can catch either the specific InvalidAgeError, or any ValueError more broadly, depending on how precisely it needs to react.",
+    "hint": "Subclass ValueError, and raise it inside an if check."
+  },
+  {
+    "id": "retry_on_failure",
+    "title": "Retry a Function on Failure",
+    "topic": "Error Handling",
+    "difficulty": "Hard",
+    "question": "Write a function retry(func, attempts=3) that calls func() and, if it raises an exception, tries again up to `attempts` times before finally letting the last exception propagate.",
+    "solution_code": "def retry(func, attempts=3):\n    last_error = None\n    for attempt in range(attempts):\n        try:\n            return func()\n        except Exception as e:\n            last_error = e\n            print(f\"Attempt {attempt + 1} failed: {e}\")\n    raise last_error\n\ncounter = {\"tries\": 0}\ndef flaky():\n    counter[\"tries\"] += 1\n    if counter[\"tries\"] < 3:\n        raise RuntimeError(\"not yet\")\n    return \"success\"\n\nprint(retry(flaky))  # succeeds on the 3rd attempt",
+    "explanation": "Looping over a fixed number of attempts, catching the exception each time and only re-raising after the loop is exhausted, is the standard pattern for retry logic against something flaky (like a network call).",
+    "hint": "Loop up to `attempts` times, catching exceptions and re-raising only after the loop."
+  },
+  {
+    "id": "safe_file_read",
+    "title": "Safely Read a File That Might Not Exist",
+    "topic": "Error Handling",
+    "difficulty": "Easy",
+    "question": "Write a function read_or_default(path, default=\"\") that returns a file's content, or `default` if the file doesn't exist (don't check os.path.exists first — catch the error instead).",
+    "solution_code": "def read_or_default(path, default=\"\"):\n    try:\n        with open(path) as f:\n            return f.read()\n    except FileNotFoundError:\n        return default\n\nprint(read_or_default(\"missing_file.txt\", \"no data\"))  # no data",
+    "explanation": "Catching FileNotFoundError directly (rather than checking existence first) avoids a race condition where the file could be deleted between the check and the open — 'ask forgiveness, not permission' is a common Python idiom.",
+    "hint": "Catch FileNotFoundError directly instead of checking existence first."
+  },
+  {
+    "id": "date_diff_days",
+    "title": "Days Between Two Dates",
+    "topic": "Modules",
+    "difficulty": "Easy",
+    "question": "Write a function days_between(date1, date2) that returns the number of days between two 'YYYY-MM-DD' date strings, using the datetime module.",
+    "solution_code": "from datetime import datetime\n\ndef days_between(date1, date2):\n    d1 = datetime.strptime(date1, \"%Y-%m-%d\")\n    d2 = datetime.strptime(date2, \"%Y-%m-%d\")\n    return abs((d2 - d1).days)\n\nprint(days_between(\"2026-01-01\", \"2026-03-01\"))  # 59",
+    "explanation": "strptime parses a date string into a real datetime object using the given format codes. Subtracting two datetimes gives a timedelta object, whose .days attribute is the difference in whole days.",
+    "hint": "Use datetime.strptime to parse both dates, then subtract them."
+  },
+  {
+    "id": "shuffle_and_sample",
+    "title": "Shuffle and Pick Random Items",
+    "topic": "Modules",
+    "difficulty": "Easy",
+    "question": "Write a function random_team(players, size) that returns `size` random, non-repeating players from a list, using the random module (not manual logic).",
+    "solution_code": "import random\n\ndef random_team(players, size):\n    return random.sample(players, size)\n\nteam = random_team([\"Ali\", \"Mona\", \"Zaid\", \"Sara\", \"Omar\"], 3)\nprint(team)  # 3 random, distinct names",
+    "explanation": "random.sample() picks a given number of unique items from a sequence without repeats, which is exactly what random.choice() called in a loop would NOT guarantee on its own.",
+    "hint": "random.sample(list, n) picks unique random items without repeats."
+  },
+  {
+    "id": "json_pretty_print",
+    "title": "Pretty-Print Nested Data as JSON",
+    "topic": "Modules",
+    "difficulty": "Easy",
+    "question": "Write a function pretty(data) that returns a nicely indented JSON string representation of a dict, using the json module (2-space indentation).",
+    "solution_code": "import json\n\ndef pretty(data):\n    return json.dumps(data, indent=2)\n\nprint(pretty({\"name\": \"Sara\", \"scores\": [90, 85]}))",
+    "explanation": "json.dumps() accepts an `indent` argument that automatically formats nested dicts and lists across multiple readable lines, instead of one long unbroken line.",
+    "hint": "json.dumps() accepts an indent argument for pretty formatting."
+  },
+  {
+    "id": "regex_extract_emails",
+    "title": "Extract All Emails from Text",
+    "topic": "Modules",
+    "difficulty": "Medium",
+    "question": "Write a function find_emails(text) that returns a list of all email addresses found in a block of text, using the re module.",
+    "solution_code": "import re\n\ndef find_emails(text):\n    pattern = r\"[\\w.+-]+@[\\w-]+\\.[\\w.-]+\"\n    return re.findall(pattern, text)\n\ntext = \"Contact sara@example.com or admin@test.org for help\"\nprint(find_emails(text))  # ['sara@example.com', 'admin@test.org']",
+    "explanation": "re.findall() returns every match of a pattern in the text as a list. The pattern here looks for typical email shapes: characters, an @, more characters, a dot, and a domain suffix.",
+    "hint": "re.findall() with a pattern matching word characters, @, and a domain."
+  },
+  {
+    "id": "cached_fib_lru",
+    "title": "Speed Up Fibonacci with lru_cache",
+    "topic": "Advanced",
+    "difficulty": "Medium",
+    "question": "Write a recursive fib(n) function decorated with functools.lru_cache so repeated calls are instant, without writing a manual cache dictionary.",
+    "solution_code": "from functools import lru_cache\n\n@lru_cache(maxsize=None)\ndef fib(n):\n    if n <= 1:\n        return n\n    return fib(n - 1) + fib(n - 2)\n\nprint(fib(30))  # fast, thanks to caching",
+    "explanation": "@lru_cache automatically remembers every (arguments -> result) pair it has already computed, so a repeated call with the same n skips recomputation entirely.",
+    "hint": "Just add @lru_cache(maxsize=None) above a normal recursive fib function."
+  },
+  {
+    "id": "custom_iterator_evens",
+    "title": "Build a Custom Even-Numbers Iterator",
+    "topic": "Advanced",
+    "difficulty": "Hard",
+    "question": "Write a class EvenNumbers(limit) implementing the iterator protocol (__iter__ and __next__) that yields even numbers from 0 up to (not including) limit.",
+    "solution_code": "class EvenNumbers:\n    def __init__(self, limit):\n        self.limit = limit\n        self.current = 0\n\n    def __iter__(self):\n        return self\n\n    def __next__(self):\n        if self.current >= self.limit:\n            raise StopIteration\n        value = self.current\n        self.current += 2\n        return value\n\nfor n in EvenNumbers(10):\n    print(n)  # 0 2 4 6 8",
+    "explanation": "__iter__ returns the iterator itself (self), and __next__ produces the next value each call, raising StopIteration once the limit is reached — this is exactly what a for loop calls behind the scenes.",
+    "hint": "__iter__ returns self; __next__ returns the next even number or raises StopIteration."
+  },
+  {
+    "id": "context_manager_suppress_errors",
+    "title": "Write a Context Manager that Suppresses an Error",
+    "topic": "Advanced",
+    "difficulty": "Medium",
+    "question": "Using contextlib.contextmanager, write ignore_errors() that silently swallows any exception raised inside its `with` block instead of crashing.",
+    "solution_code": "from contextlib import contextmanager\n\n@contextmanager\ndef ignore_errors():\n    try:\n        yield\n    except Exception as e:\n        print(f\"Ignored: {e}\")\n\nwith ignore_errors():\n    print(1 / 0)\nprint(\"Program continues normally\")",
+    "explanation": "Code after yield in a @contextmanager function runs on exit — wrapping the yield in try/except lets it catch and swallow any exception raised inside the with block, instead of letting it propagate.",
+    "hint": "Wrap yield in try/except inside a @contextmanager function."
+  },
+  {
+    "id": "match_case_dispatch",
+    "title": "Dispatch with match/case",
+    "topic": "Advanced",
+    "difficulty": "Medium",
+    "question": "Write a function handle_command(command) that uses match/case to return a different message for commands 'start', 'stop', a tuple like ('move', direction), and anything else.",
+    "solution_code": "def handle_command(command):\n    match command:\n        case \"start\":\n            return \"Starting...\"\n        case \"stop\":\n            return \"Stopping...\"\n        case (\"move\", direction):\n            return f\"Moving {direction}\"\n        case _:\n            return \"Unknown command\"\n\nprint(handle_command(\"start\"))            # Starting...\nprint(handle_command((\"move\", \"north\")))  # Moving north",
+    "explanation": "match/case can match on structure, not just plain values — the ('move', direction) pattern both checks the tuple shape AND binds `direction` to whatever the second item is, in one step.",
+    "hint": "Use case (\"move\", direction) to match a tuple shape and bind a variable at once."
+  },
+  {
+    "id": "swap_two_variables_temp",
+    "title": "Swap Two Variables with a Temp Variable",
+    "topic": "Variables",
+    "difficulty": "Easy",
+    "question": "Write code that swaps the values of a and b using a third temporary variable (not tuple unpacking).",
+    "hint": "Store one value somewhere safe before you overwrite it.",
+    "solution_code": "a = 5\nb = 10\ntemp = a\na = b\nb = temp\nprint(a, b)  # 10 5",
+    "explanation": "Without a temporary variable, assigning a = b first would overwrite a's original value, losing it before you can give it to b. The temp variable holds it safely in between.",
+    "expected_output": "10 5",
+    "tags": [
+      "variables",
+      "assignment",
+      "beginner"
+    ]
+  },
+  {
+    "id": "total_price_calculation",
+    "title": "Calculate a Total Price",
+    "topic": "Variables",
+    "difficulty": "Easy",
+    "question": "Given price = 25.5 and quantity = 3, write code that calculates and prints the total cost.",
+    "hint": "Multiply the two variables together.",
+    "solution_code": "price = 25.5\nquantity = 3\ntotal = price * quantity\nprint(f\"Total: {total}\")  # Total: 76.5",
+    "explanation": "Storing each piece of data in its own clearly-named variable, then combining them in a calculation, is the most basic and common pattern in any program.",
+    "expected_output": "Total: 76.5",
+    "tags": [
+      "variables",
+      "arithmetic",
+      "beginner"
+    ]
+  },
+  {
+    "id": "celsius_to_fahrenheit_vars",
+    "title": "Celsius to Fahrenheit",
+    "topic": "Variables",
+    "difficulty": "Easy",
+    "question": "Write code that converts a celsius variable (25) to fahrenheit using the formula F = C * 9/5 + 32.",
+    "hint": "Just translate the math formula directly into a Python expression.",
+    "solution_code": "celsius = 25\nfahrenheit = celsius * 9 / 5 + 32\nprint(fahrenheit)  # 77.0",
+    "explanation": "This is a direct translation of a real-world formula into code — the variable names make the formula's meaning clear when you read it back later.",
+    "expected_output": "77.0",
+    "tags": [
+      "variables",
+      "arithmetic",
+      "beginner"
+    ]
+  },
+  {
+    "id": "check_variable_types",
+    "title": "Check Variable Types",
+    "topic": "Variables",
+    "difficulty": "Easy",
+    "question": "Given four variables of different types (int, float, str, bool), print each one's type using type().",
+    "hint": "type() works on any value or variable.",
+    "solution_code": "age = 21\nheight = 1.7\nname = \"Sara\"\nis_student = True\n\nfor value in (age, height, name, is_student):\n    print(type(value))",
+    "explanation": "type() reveals what kind of value a variable actually holds, which is useful for debugging when a variable doesn't behave the way you expect.",
+    "expected_output": "<class 'int'>\n<class 'float'>\n<class 'str'>\n<class 'bool'>",
+    "tags": [
+      "variables",
+      "types",
+      "beginner"
+    ]
+  },
+  {
+    "id": "build_full_name",
+    "title": "Build a Full Name",
+    "topic": "Variables",
+    "difficulty": "Easy",
+    "question": "Given first_name and last_name variables, build and print a single full_name variable combining them with a space.",
+    "hint": "String concatenation with + needs an explicit space in between.",
+    "solution_code": "first_name = \"Sara\"\nlast_name = \"Ahmed\"\nfull_name = first_name + \" \" + last_name\nprint(full_name)  # Sara Ahmed",
+    "explanation": "Combining separate pieces of related data into one derived variable is a common pattern — here, two name parts become one displayable full name.",
+    "expected_output": "Sara Ahmed",
+    "tags": [
+      "variables",
+      "strings",
+      "beginner"
+    ]
+  },
+  {
+    "id": "increase_variable_by_percent",
+    "title": "Increase a Variable by a Percentage",
+    "topic": "Variables",
+    "difficulty": "Easy",
+    "question": "Given salary = 5000, write code that increases it by 10% and stores the new value back in salary.",
+    "hint": "10% of a number is the number multiplied by 0.10.",
+    "solution_code": "salary = 5000\nsalary = salary * 1.10\nprint(salary)  # 5500.0",
+    "explanation": "Multiplying by 1.10 (100% + 10%) in one step is a common shortcut for 'increase by 10%', instead of computing the 10% separately and adding it.",
+    "expected_output": "5500.0",
+    "tags": [
+      "variables",
+      "arithmetic",
+      "beginner"
+    ]
+  },
+  {
+    "id": "even_or_odd_operator",
+    "title": "Even or Odd Checker",
+    "topic": "Operators",
+    "difficulty": "Easy",
+    "question": "Write code that prints whether a number n = 17 is even or odd, using the % operator.",
+    "hint": "A number is even exactly when n % 2 equals 0.",
+    "solution_code": "n = 17\nif n % 2 == 0:\n    print(\"Even\")\nelse:\n    print(\"Odd\")  # Odd",
+    "explanation": "% gives the remainder after division by 2 — a remainder of 0 means the number divides evenly, i.e. it's even.",
+    "expected_output": "Odd",
+    "tags": [
+      "operators",
+      "modulo",
+      "beginner"
+    ]
+  },
+  {
+    "id": "bmi_calculator",
+    "title": "BMI Calculator",
+    "topic": "Operators",
+    "difficulty": "Easy",
+    "question": "Given weight_kg = 70 and height_m = 1.75, calculate BMI using weight / (height ** 2) and print it rounded to 1 decimal.",
+    "hint": "** is the exponent operator; combine it with / for the full formula.",
+    "solution_code": "weight_kg = 70\nheight_m = 1.75\nbmi = weight_kg / (height_m ** 2)\nprint(round(bmi, 1))  # 22.9",
+    "explanation": "This combines two operators in one expression: ** for squaring the height, and / for the division — parentheses make sure the squaring happens first even without relying purely on precedence.",
+    "expected_output": "22.9",
+    "tags": [
+      "operators",
+      "arithmetic",
+      "beginner"
+    ]
+  },
+  {
+    "id": "compound_interest_operator",
+    "title": "Compound Interest",
+    "topic": "Operators",
+    "difficulty": "Medium",
+    "question": "Given principal=1000, rate=0.05, years=3, calculate the final amount using A = P * (1 + r) ** t.",
+    "hint": "Compute (1 + rate) first, then raise it to the power of years.",
+    "solution_code": "principal = 1000\nrate = 0.05\nyears = 3\namount = principal * (1 + rate) ** years\nprint(round(amount, 2))  # 1157.63",
+    "explanation": "Operator precedence means ** happens before *, so (1 + rate) ** years is computed as one unit before being multiplied by principal — the parentheses around (1 + rate) are still required since + has lower precedence than **.",
+    "expected_output": "1157.63",
+    "tags": [
+      "operators",
+      "precedence",
+      "arithmetic"
+    ]
+  },
+  {
+    "id": "loan_eligibility_logical",
+    "title": "Loan Eligibility Check",
+    "topic": "Operators",
+    "difficulty": "Easy",
+    "question": "Given income=6000 and credit_score=680, print True if the person is eligible: income >= 5000 AND credit_score >= 650.",
+    "hint": "Combine two comparisons with the `and` operator.",
+    "solution_code": "income = 6000\ncredit_score = 680\neligible = income >= 5000 and credit_score >= 650\nprint(eligible)  # True",
+    "explanation": "`and` only produces True when both individual comparisons are True — this is how you combine multiple conditions into one eligibility check.",
+    "expected_output": "True",
+    "tags": [
+      "operators",
+      "logical",
+      "beginner"
+    ]
+  },
+  {
+    "id": "operator_precedence_puzzle",
+    "title": "Operator Precedence Puzzle",
+    "topic": "Operators",
+    "difficulty": "Medium",
+    "question": "Without running it first, figure out what result = 2 + 3 * 4 ** 2 - 1 evaluates to, then verify with code.",
+    "hint": "Work from highest precedence down: exponent, then multiplication, then addition/subtraction.",
+    "solution_code": "result = 2 + 3 * 4 ** 2 - 1\nprint(result)  # 49\n# Step by step: 4**2=16, 3*16=48, 2+48-1=49",
+    "explanation": "Python follows standard math precedence: ** first, then * and /, then + and - last, all evaluated left to right within the same precedence level.",
+    "expected_output": "49",
+    "tags": [
+      "operators",
+      "precedence"
+    ]
+  },
+  {
+    "id": "minutes_to_clock",
+    "title": "Convert Minutes to Hours and Minutes",
+    "topic": "Operators",
+    "difficulty": "Medium",
+    "question": "Given total_minutes = 135, print it as 'X hours Y minutes' using // and %.",
+    "hint": "// gives whole hours, % gives the leftover minutes.",
+    "solution_code": "total_minutes = 135\nhours = total_minutes // 60\nminutes = total_minutes % 60\nprint(f\"{hours} hours {minutes} minutes\")  # 2 hours 15 minutes",
+    "explanation": "// and % are a natural pair for splitting a total into a whole-unit count and a remainder — here, whole hours and leftover minutes.",
+    "expected_output": "2 hours 15 minutes",
+    "tags": [
+      "operators",
+      "modulo",
+      "floor-division"
+    ]
+  },
+  {
+    "id": "grade_classifier_if",
+    "title": "Grade Classifier",
+    "topic": "If",
+    "difficulty": "Easy",
+    "question": "Write code that prints a letter grade (A/B/C/F) for score = 74 using if/elif/else (A>=90, B>=80, C>=70, else F).",
+    "hint": "Check the highest threshold first, since elif stops at the first true condition.",
+    "solution_code": "score = 74\nif score >= 90:\n    grade = \"A\"\nelif score >= 80:\n    grade = \"B\"\nelif score >= 70:\n    grade = \"C\"\nelse:\n    grade = \"F\"\nprint(grade)  # C",
+    "explanation": "Checking from highest to lowest threshold with elif ensures each score only matches one bracket — the first condition it satisfies from the top.",
+    "expected_output": "C",
+    "tags": [
+      "if",
+      "conditionals",
+      "beginner"
+    ]
+  },
+  {
+    "id": "leap_year_check",
+    "title": "Leap Year Checker",
+    "topic": "If",
+    "difficulty": "Medium",
+    "question": "Write a function is_leap_year(year) that returns True if the year is a leap year (divisible by 4, but not by 100 unless also by 400).",
+    "hint": "Combine three modulo checks with and/or, or nest the '100 unless 400' exception inside the divisible-by-4 branch.",
+    "solution_code": "def is_leap_year(year):\n    if year % 4 != 0:\n        return False\n    if year % 100 != 0:\n        return True\n    return year % 400 == 0\n\nprint(is_leap_year(2024))  # True\nprint(is_leap_year(1900))  # False",
+    "explanation": "The rule has an exception to an exception (divisible by 100 disqualifies it, UNLESS also divisible by 400), which maps naturally onto a sequence of early-return if checks.",
+    "expected_output": "True\nFalse",
+    "tags": [
+      "if",
+      "conditionals",
+      "modulo"
+    ]
+  },
+  {
+    "id": "triangle_type_classifier",
+    "title": "Classify a Triangle by Its Sides",
+    "topic": "If",
+    "difficulty": "Medium",
+    "question": "Given three side lengths a=5, b=5, c=8, print whether the triangle is Equilateral, Isosceles, or Scalene.",
+    "hint": "Compare all three sides to each other with == checks.",
+    "solution_code": "a, b, c = 5, 5, 8\nif a == b == c:\n    print(\"Equilateral\")\nelif a == b or b == c or a == c:\n    print(\"Isosceles\")\nelse:\n    print(\"Scalene\")  # Isosceles",
+    "explanation": "Chained equality (a == b == c) checks all three are equal at once; the elif then checks if any pair matches, leaving 'no pair matches' as the final else case.",
+    "expected_output": "Isosceles",
+    "tags": [
+      "if",
+      "conditionals"
+    ]
+  },
+  {
+    "id": "simple_calculator_if",
+    "title": "Simple Calculator with if/elif",
+    "topic": "If",
+    "difficulty": "Easy",
+    "question": "Given a=10, b=3, operator='*', write code that performs the right arithmetic operation based on the operator string.",
+    "hint": "Compare the operator string against each possible symbol with elif.",
+    "solution_code": "a, b, operator = 10, 3, \"*\"\nif operator == \"+\":\n    result = a + b\nelif operator == \"-\":\n    result = a - b\nelif operator == \"*\":\n    result = a * b\nelif operator == \"/\":\n    result = a / b\nprint(result)  # 30",
+    "explanation": "Dispatching behavior based on a string value is a common pattern; each elif branch handles one possible operator.",
+    "expected_output": "30",
+    "tags": [
+      "if",
+      "conditionals",
+      "beginner"
+    ]
+  },
+  {
+    "id": "discount_calculator_if",
+    "title": "Discount Calculator",
+    "topic": "If",
+    "difficulty": "Easy",
+    "question": "Given purchase_amount = 250, apply a 20% discount if it's over 200, 10% if over 100, otherwise no discount, and print the final price.",
+    "hint": "Check the biggest threshold (200) first.",
+    "solution_code": "purchase_amount = 250\nif purchase_amount > 200:\n    final_price = purchase_amount * 0.8\nelif purchase_amount > 100:\n    final_price = purchase_amount * 0.9\nelse:\n    final_price = purchase_amount\nprint(final_price)  # 200.0",
+    "explanation": "Checking the largest discount tier first with elif ensures a purchase over 200 gets the biggest discount, not accidentally caught by a smaller-tier check first.",
+    "expected_output": "200.0",
+    "tags": [
+      "if",
+      "conditionals",
+      "beginner"
+    ]
+  },
+  {
+    "id": "rock_paper_scissors_winner",
+    "title": "Rock Paper Scissors Winner",
+    "topic": "If",
+    "difficulty": "Medium",
+    "question": "Given player1='rock' and player2='scissors', write code that prints who wins ('Player 1', 'Player 2', or 'Tie').",
+    "hint": "List out the three winning combinations for player1 explicitly.",
+    "solution_code": "player1, player2 = \"rock\", \"scissors\"\nif player1 == player2:\n    result = \"Tie\"\nelif (player1, player2) in [(\"rock\", \"scissors\"), (\"scissors\", \"paper\"), (\"paper\", \"rock\")]:\n    result = \"Player 1\"\nelse:\n    result = \"Player 2\"\nprint(result)  # Player 1",
+    "explanation": "Listing the winning (player1, player2) pairs as tuples inside a list, then checking membership with `in`, avoids writing three separate or-connected comparisons.",
+    "expected_output": "Player 1",
+    "tags": [
+      "if",
+      "conditionals",
+      "tuples"
+    ]
+  },
+  {
+    "id": "exam_pass_conditions",
+    "title": "Exam Pass with Multiple Conditions",
+    "topic": "Nested If",
+    "difficulty": "Medium",
+    "question": "Given marks=55 and attendance=80, a student passes only if marks >= 50 AND, separately, print a different message if attendance is also below 75.",
+    "hint": "Check the marks condition first, then nest the attendance check inside it.",
+    "solution_code": "marks, attendance = 55, 80\nif marks >= 50:\n    print(\"Passed on marks\")\n    if attendance < 75:\n        print(\"Warning: low attendance\")\nelse:\n    print(\"Failed\")",
+    "explanation": "The attendance warning only makes sense to check AFTER confirming the student passed on marks — that dependency is exactly what nesting expresses.",
+    "expected_output": "Passed on marks",
+    "tags": [
+      "nested-if",
+      "conditionals"
+    ]
+  },
+  {
+    "id": "login_system_nested",
+    "title": "Simple Login System",
+    "topic": "Nested If",
+    "difficulty": "Medium",
+    "question": "Given a stored username/password and entered ones, check the username first; only if it matches, check the password, printing distinct messages for each failure case.",
+    "hint": "Nest the password check inside the username-matched branch.",
+    "solution_code": "stored_user, stored_pass = \"admin\", \"1234\"\nentered_user, entered_pass = \"admin\", \"0000\"\n\nif entered_user == stored_user:\n    if entered_pass == stored_pass:\n        print(\"Login successful\")\n    else:\n        print(\"Wrong password\")\nelse:\n    print(\"Unknown username\")",
+    "explanation": "Nesting lets you give a more specific error ('wrong password' vs 'unknown username') instead of a single generic 'login failed', by only checking the password once the username is confirmed.",
+    "expected_output": "Wrong password",
+    "tags": [
+      "nested-if",
+      "conditionals"
+    ]
+  },
+  {
+    "id": "ticket_price_nested",
+    "title": "Ticket Price by Age and Student Status",
+    "topic": "Nested If",
+    "difficulty": "Medium",
+    "question": "Given age=20 and is_student=True, print the ticket price: under 12 is free, 12-64 is $10 (but $7 if a student), 65+ is $5.",
+    "hint": "Check the age bracket first, then nest the student discount inside the middle bracket.",
+    "solution_code": "age, is_student = 20, True\nif age < 12:\n    price = 0\nelif age < 65:\n    if is_student:\n        price = 7\n    else:\n        price = 10\nelse:\n    price = 5\nprint(price)  # 7",
+    "explanation": "The student discount only applies within the middle age bracket, so it's nested specifically inside that elif branch rather than checked independently of age.",
+    "expected_output": "7",
+    "tags": [
+      "nested-if",
+      "conditionals"
+    ]
+  },
+  {
+    "id": "number_classification_nested",
+    "title": "Classify a Number: Sign and Parity",
+    "topic": "Nested If",
+    "difficulty": "Easy",
+    "question": "Given n = -8, print whether it's Positive or Negative, AND whether it's Even or Odd, using nested if statements.",
+    "hint": "Check the sign first, then nest the even/odd check inside each branch.",
+    "solution_code": "n = -8\nif n >= 0:\n    sign = \"Positive\"\nelse:\n    sign = \"Negative\"\n\nif n % 2 == 0:\n    parity = \"Even\"\nelse:\n    parity = \"Odd\"\n\nprint(f\"{sign}, {parity}\")  # Negative, Even",
+    "explanation": "Two independent classifications (sign and parity) can be computed separately, but a fully nested version checks parity only within each sign branch to show the nesting pattern explicitly.",
+    "expected_output": "Negative, Even",
+    "tags": [
+      "nested-if",
+      "conditionals",
+      "modulo"
+    ]
+  },
+  {
+    "id": "weather_advice_nested",
+    "title": "Weather Advice",
+    "topic": "Nested If",
+    "difficulty": "Easy",
+    "question": "Given temperature=15 and is_raining=True, print clothing advice: nest a rain-specific tip only if it's also cold (temperature < 20).",
+    "hint": "Check temperature first, then nest the rain check inside the cold branch.",
+    "solution_code": "temperature, is_raining = 15, True\nif temperature < 20:\n    print(\"Wear a jacket\")\n    if is_raining:\n        print(\"Bring an umbrella too\")\nelse:\n    print(\"Light clothing is fine\")",
+    "explanation": "The umbrella advice is only relevant when it's already cold enough to need a jacket, so checking rain is naturally nested inside the cold-weather branch.",
+    "expected_output": "Wear a jacket\nBring an umbrella too",
+    "tags": [
+      "nested-if",
+      "conditionals"
+    ]
+  },
+  {
+    "id": "loan_approval_nested",
+    "title": "Bank Loan Approval",
+    "topic": "Nested If",
+    "difficulty": "Medium",
+    "question": "Given income=4000 and credit_score=600, approve a loan only if income >= 3000, and within that, only if credit_score >= 650, else flag for manual review.",
+    "hint": "Nest the credit score check inside the income check.",
+    "solution_code": "income, credit_score = 4000, 600\nif income >= 3000:\n    if credit_score >= 650:\n        print(\"Approved\")\n    else:\n        print(\"Manual review needed\")\nelse:\n    print(\"Rejected: income too low\")",
+    "explanation": "The credit score is only worth checking once the income requirement is already satisfied, which is exactly what nesting the second check inside the first expresses.",
+    "expected_output": "Manual review needed",
+    "tags": [
+      "nested-if",
+      "conditionals"
+    ]
+  },
+  {
+    "id": "sum_until_negative",
+    "title": "Sum Numbers Until a Negative Appears",
+    "topic": "While",
+    "difficulty": "Easy",
+    "question": "Given a list of numbers, use a while loop to sum them one at a time, stopping as soon as you hit a negative number.",
+    "hint": "Use an index variable and a while condition that also checks the current number's sign.",
+    "solution_code": "numbers = [3, 5, 2, -1, 8]\ntotal = 0\ni = 0\nwhile i < len(numbers) and numbers[i] >= 0:\n    total += numbers[i]\n    i += 1\nprint(total)  # 10",
+    "explanation": "The while condition combines two checks: staying within the list bounds, AND the current number not being negative — the loop stops as soon as either becomes false.",
+    "expected_output": "10",
+    "tags": [
+      "while",
+      "loops"
+    ]
+  },
+  {
+    "id": "digit_count_while",
+    "title": "Count the Digits of a Number",
+    "topic": "While",
+    "difficulty": "Easy",
+    "question": "Write a function count_digits(n) that returns how many digits a positive integer has, using a while loop (not str(n)).",
+    "hint": "Keep dividing by 10 with // until the number becomes 0, counting each division.",
+    "solution_code": "def count_digits(n):\n    count = 0\n    while n > 0:\n        n //= 10\n        count += 1\n    return count\n\nprint(count_digits(4821))  # 4",
+    "explanation": "Each floor division by 10 removes one digit; counting how many divisions it takes to reach 0 gives the total digit count.",
+    "expected_output": "4",
+    "tags": [
+      "while",
+      "loops",
+      "floor-division"
+    ]
+  },
+  {
+    "id": "collatz_sequence_while",
+    "title": "Collatz Sequence Length",
+    "topic": "While",
+    "difficulty": "Medium",
+    "question": "Write a function collatz_length(n) that counts how many steps it takes to reach 1, where each step is: if n is even, n = n//2, else n = 3*n + 1.",
+    "hint": "Loop while n != 1, applying the appropriate rule each time and counting steps.",
+    "solution_code": "def collatz_length(n):\n    steps = 0\n    while n != 1:\n        if n % 2 == 0:\n            n = n // 2\n        else:\n            n = 3 * n + 1\n        steps += 1\n    return steps\n\nprint(collatz_length(6))  # 8",
+    "explanation": "The Collatz conjecture says this process always eventually reaches 1 (though it's never been proven for all numbers) — the while loop just keeps applying the rule until that happens.",
+    "expected_output": "8",
+    "tags": [
+      "while",
+      "loops",
+      "conditionals"
+    ]
+  },
+  {
+    "id": "password_attempts_while",
+    "title": "Limited Password Attempts",
+    "topic": "While",
+    "difficulty": "Medium",
+    "question": "Simulate a login with a fixed list of attempted passwords and a max of 3 tries: loop through attempts, stopping early on a correct match or after 3 tries.",
+    "hint": "Use a while loop with two stopping conditions: match found, or attempts used up.",
+    "solution_code": "correct_password = \"py123\"\nattempts_list = [\"wrong1\", \"py123\", \"wrong2\"]\n\ni = 0\nmax_attempts = 3\nwhile i < len(attempts_list) and i < max_attempts:\n    if attempts_list[i] == correct_password:\n        print(\"Access granted\")\n        break\n    i += 1\nelse:\n    print(\"Access denied\")",
+    "explanation": "break exits the loop the moment a correct password is found; the while's own else clause runs only if the loop finished normally (no break), meaning no correct attempt was found.",
+    "expected_output": "Access granted",
+    "tags": [
+      "while",
+      "loops",
+      "break"
+    ]
+  },
+  {
+    "id": "power_of_two_while",
+    "title": "Check if a Number is a Power of Two",
+    "topic": "While",
+    "difficulty": "Easy",
+    "question": "Write a function is_power_of_two(n) that returns True if n can be reached by repeatedly dividing some starting value by 2, using a while loop.",
+    "hint": "Keep dividing n by 2 while it's even; if you end at exactly 1, it was a power of two.",
+    "solution_code": "def is_power_of_two(n):\n    if n < 1:\n        return False\n    while n % 2 == 0:\n        n //= 2\n    return n == 1\n\nprint(is_power_of_two(16))  # True\nprint(is_power_of_two(18))  # False",
+    "explanation": "Repeatedly halving an even number and checking if you land exactly on 1 tests whether the original number was purely made of factors of 2.",
+    "expected_output": "True\nFalse",
+    "tags": [
+      "while",
+      "loops",
+      "modulo"
+    ]
+  },
+  {
+    "id": "sum_digits_while_reverse",
+    "title": "Reverse a Number Using While",
+    "topic": "While",
+    "difficulty": "Easy",
+    "question": "Write a function reverse_number(n) that reverses the digits of a positive integer using a while loop (e.g. 1234 -> 4321).",
+    "hint": "Peel off the last digit with % 10, build up the reversed number, then remove that digit with // 10.",
+    "solution_code": "def reverse_number(n):\n    reversed_n = 0\n    while n > 0:\n        digit = n % 10\n        reversed_n = reversed_n * 10 + digit\n        n //= 10\n    return reversed_n\n\nprint(reverse_number(1234))  # 4321",
+    "explanation": "Each iteration extracts the last digit and appends it to the growing reversed number (shifting existing digits left with *10), while shrinking the original number from the end.",
+    "expected_output": "4321",
+    "tags": [
+      "while",
+      "loops",
+      "modulo"
+    ]
+  },
+  {
+    "id": "count_evens_in_range",
+    "title": "Count Even Numbers in a Range",
+    "topic": "Conditionals + Loops",
+    "difficulty": "Easy",
+    "question": "Using a for loop and an if check together, count how many even numbers are between 1 and 50 (inclusive).",
+    "hint": "Loop through the range, and inside the loop, use if to decide whether to count each number.",
+    "solution_code": "count = 0\nfor n in range(1, 51):\n    if n % 2 == 0:\n        count += 1\nprint(count)  # 25",
+    "explanation": "This is the most fundamental loop + conditional combination: the loop provides every candidate value, and the if decides which ones actually count.",
+    "expected_output": "25",
+    "tags": [
+      "conditionals",
+      "loops",
+      "beginner"
+    ]
+  },
+  {
+    "id": "first_number_divisible_by_both",
+    "title": "First Number Divisible by Both 3 and 7",
+    "topic": "Conditionals + Loops",
+    "difficulty": "Medium",
+    "question": "Using a while loop and an if check, find the first number greater than 100 that is divisible by both 3 and 7, then stop.",
+    "hint": "Increment a counter in a while loop, and use if plus break once you find a match.",
+    "solution_code": "n = 101\nwhile True:\n    if n % 3 == 0 and n % 7 == 0:\n        print(n)\n        break\n    n += 1\n# 105",
+    "explanation": "Combining an unbounded while True loop with an if+break pattern is common when you're searching for the first value matching a condition, rather than processing a fixed range.",
+    "expected_output": "105",
+    "tags": [
+      "conditionals",
+      "loops",
+      "while",
+      "break"
+    ]
+  },
+  {
+    "id": "filter_and_classify_scores",
+    "title": "Filter and Classify a List of Scores",
+    "topic": "Conditionals + Loops",
+    "difficulty": "Medium",
+    "question": "Given a list of exam scores, loop through them and print 'Pass' or 'Fail' for each one (pass is score >= 60), then print the total number of passes.",
+    "hint": "Use a for loop with an if/else inside it, plus a counter variable for the total.",
+    "solution_code": "scores = [45, 78, 92, 55, 61]\npasses = 0\nfor score in scores:\n    if score >= 60:\n        print(f\"{score}: Pass\")\n        passes += 1\n    else:\n        print(f\"{score}: Fail\")\nprint(f\"Total passes: {passes}\")",
+    "explanation": "The loop visits each score once; the if/else inside decides what to print for that specific score, while a counter outside the if accumulates the running total across all iterations.",
+    "expected_output": "45: Fail\n78: Pass\n92: Pass\n55: Fail\n61: Pass\nTotal passes: 3",
+    "tags": [
+      "conditionals",
+      "loops",
+      "beginner"
+    ]
+  },
+  {
+    "id": "find_first_negative_nested_loop",
+    "title": "Find the First Negative Number in a Grid",
+    "topic": "Conditionals + Loops",
+    "difficulty": "Hard",
+    "question": "Given a 2D list (grid) of numbers, use nested for loops and an if check to find and print the first negative number, then stop searching entirely.",
+    "hint": "A single break only exits the inner loop — you need a flag or a function with return to stop both loops.",
+    "solution_code": "grid = [[4, 7, 2], [9, -3, 5], [1, 8, 6]]\n\ndef find_first_negative(grid):\n    for row in grid:\n        for value in row:\n            if value < 0:\n                return value\n    return None\n\nprint(find_first_negative(grid))  # -3",
+    "explanation": "break only exits the innermost loop it's written in, so stopping BOTH nested loops as soon as a match is found is cleanest by putting the search in its own function and using return, which exits immediately regardless of nesting depth.",
+    "expected_output": "-3",
+    "tags": [
+      "conditionals",
+      "loops",
+      "nested-loops"
+    ]
+  },
+  {
+    "id": "grade_report_with_average",
+    "title": "Grade Report with Conditional Feedback",
+    "topic": "Conditionals + Loops",
+    "difficulty": "Medium",
+    "question": "Given a list of scores, loop through them to compute the average, and print different feedback based on which range the average falls into.",
+    "hint": "First loop to build a sum, compute the average after the loop, then use if/elif on the result.",
+    "solution_code": "scores = [72, 88, 65, 90, 77]\ntotal = 0\nfor score in scores:\n    total += score\naverage = total / len(scores)\n\nif average >= 85:\n    print(f\"Average {average:.1f}: Excellent\")\nelif average >= 70:\n    print(f\"Average {average:.1f}: Good\")\nelse:\n    print(f\"Average {average:.1f}: Needs improvement\")",
+    "explanation": "The loop's job is purely to accumulate data (the total); the conditional logic that interprets the final result runs separately, after the loop has finished.",
+    "expected_output": "Average 78.4: Good",
+    "tags": [
+      "conditionals",
+      "loops"
+    ]
+  },
+  {
+    "id": "print_odd_positions_while",
+    "title": "Print Items at Odd Positions",
+    "topic": "Conditionals + Loops",
+    "difficulty": "Easy",
+    "question": "Using a while loop and an if check, print only the items at odd index positions (1, 3, 5, ...) of a list.",
+    "hint": "Use a while loop with a manual index, and check if the index itself is odd.",
+    "solution_code": "items = [\"a\", \"b\", \"c\", \"d\", \"e\", \"f\"]\ni = 0\nwhile i < len(items):\n    if i % 2 != 0:\n        print(items[i])\n    i += 1\n# b\n# d\n# f",
+    "explanation": "Here the if condition checks the loop's own index variable (i % 2 != 0), not the item's value — a reminder that conditionals inside a loop can filter based on position, not just content.",
+    "expected_output": "b\nd\nf",
+    "tags": [
+      "conditionals",
+      "loops",
+      "while"
+    ]
+  }
+]
